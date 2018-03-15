@@ -5,14 +5,19 @@ import TranscriptionContainer from './TranscriptionContainer';
 import KeywordContainer from '../components/KeywordArea';
 
 class ConversationContainer extends Component {
-  state = {};
+  state = {
+    user: {
+      id: 1,
+      username: 'John'
+    }
+  };
 
   render() {
     return (
       <div>
         <Header />
         <HeroDuck />
-        <TranscriptionContainer />
+        <TranscriptionContainer user={this.state.user} />
         <KeywordContainer />
       </div>
     );

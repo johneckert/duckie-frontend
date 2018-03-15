@@ -6,12 +6,15 @@ const Recorder = props => {
   return (
     <div>
       Recorder
-      <VoiceRecognition
-        continuous
-        onStart={props.handleSpeechBegin}
-        onEnd={props.handleSpeechEnd}
-        onResult={props.handleResult}
-      />
+      <button onClick={props.toggleListening}>Start Listening</button>
+      {props.listening ? (
+        <VoiceRecognition
+          continuous
+          onStart={props.handleSpeechBegin}
+          onEnd={props.handleSpeechEnd}
+          onResult={props.handleResult}
+        />
+      ) : null}
     </div>
   );
 };
