@@ -7,10 +7,8 @@ import BASE_URL from '../urls.js';
 class TranscriptionContainer extends React.Component {
   state = {
     conversation: {
-      user_id: 0,
-      transcript: '',
-      created_at: '',
-      updated_at: ''
+      user_id: null,
+      transcript: ''
     },
     listening: false
   };
@@ -23,22 +21,27 @@ class TranscriptionContainer extends React.Component {
     this.setState({ listening: !this.state.listening });
   };
 
+  //Executes when speech to text begins listening
   handleSpeechBegin = event => {
-    console.log('Begin, ', event.target.value);
+    console.log('Begin');
   };
-
-  handleSpeechEnd = event => {
-    console.log('End, ', event.target.value);
-    this.createConversation();
-  };
-
+  //During speech to text updates transcript in state.
   handleResult = event => {
     let newText = event.finalTranscript;
-    let updatedTranscript = this.state.conversation.transcript.concat(` ${newText}`);
+    let updatedTranscript = this.state.conversation.transcript.concat(newText);
+    console.log('updatedTranscript: ', updatedTranscript);
     this.setState(
-      { transcript: updatedTranscript },
-      console.log(this.state.conversation.transcript)
+      { conversation: { ...this.state.conversation, transcript: updatedTranscript } },
+      () => {
+        console.log('state before POST:', this.state.conversation);
+      }
     );
+  };
+
+  //Executes when speech to text stops listening
+  handleSpeechEnd = event => {
+    console.log('End', this.state.conversation);
+    this.createConversation();
   };
 
   createConversation = () => {
@@ -47,25 +50,9 @@ class TranscriptionContainer extends React.Component {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify(this.state.conversation)
     });
-  };
-
-  updateConversation = () => {
-    console.log(this.state.conversation.id);
-    return fetch(
-      BASE_URL + 'users/' + this.props.user.id + '/conversations/' + this.state.conversation.id,
-      {
-        method: 'PATCH',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.state.conversation)
-      }
-    )
-      .then(res => res.json())
-      .then(json => this.setState({ currentConversation: json }));
   };
 
   render() {
@@ -79,7 +66,7 @@ class TranscriptionContainer extends React.Component {
           handleSpeechEnd={this.handleSpeechEnd}
           handleResult={this.handleResult}
         />
-        <Transcript transcript={this.state.transcript} />
+        <Transcript transcript={this.state.conversation.transcript} />
       </div>
     );
   }

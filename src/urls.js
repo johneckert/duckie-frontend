@@ -1,3 +1,3 @@
-const BASE_URL = 'http://localhost:3000/users/1/conversations';
+const BASE_URL = 'http://localhost:3000/';
 
 export default BASE_URL;
