@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import HeroDuck from '../components/HeroDuck';
 import TranscriptionContainer from './TranscriptionContainer';
-import KeywordContainer from '../components/KeywordArea';
+import KeywordArea from '../components/KeywordArea';
 
 class ConversationContainer extends Component {
   state = {
     user: {
       id: 1,
       username: 'John'
-    }
+    },
+    keywords: []
+  };
+
+  getKeyWords = json => {
+    this.setState({ keywords: json });
+    console.log('state after:', this.state.keywords);
   };
 
   render() {
@@ -17,8 +23,8 @@ class ConversationContainer extends Component {
       <div>
         <Header />
         <HeroDuck />
-        <TranscriptionContainer user={this.state.user} />
-        <KeywordContainer />
+        <TranscriptionContainer user={this.state.user} getKeyWords={this.getKeyWords} />
+        <KeywordArea keywords={this.state.keywords} />
       </div>
     );
   }

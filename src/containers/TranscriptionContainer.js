@@ -52,7 +52,12 @@ class TranscriptionContainer extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state.conversation)
-    });
+    })
+      .then(keywords => keywords.json())
+      .then(json => {
+        console.log(('response:', json));
+        this.props.getKeyWords(json);
+      });
   };
 
   render() {
