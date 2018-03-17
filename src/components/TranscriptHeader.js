@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TranscriptHeader = props => {
-  return <h2 className="transcript-header">Tell me your problem</h2>;
+  return <div className="transcript-header">Tell me your problem</div>;
 };
 
 export default TranscriptHeader;

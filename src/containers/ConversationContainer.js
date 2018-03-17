@@ -20,14 +20,19 @@ class ConversationContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="conversation-container">
         <HeroDuck />
         <TranscriptionContainer
+          className="transcript-item"
           user={this.state.user}
           getKeyWords={this.getKeyWords}
           colors={this.state.colors}
         />
-        <KeywordArea keywords={this.state.keywords} colors={this.state.colors} />
+        <KeywordArea
+          className="keyword-item"
+          keywords={this.state.keywords}
+          colors={this.state.colors}
+        />
       </div>
     );
   }

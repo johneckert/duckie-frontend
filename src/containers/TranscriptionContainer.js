@@ -2,6 +2,7 @@ import React from 'react';
 import TranscriptHeader from '../components/TranscriptHeader';
 import Recorder from '../components/Recorder.js';
 import Transcript from '../components/Transcript';
+import ListenButton from '../components/ListenButton';
 import BASE_URL from '../urls.js';
 
 class TranscriptionContainer extends React.Component {
@@ -62,8 +63,11 @@ class TranscriptionContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <TranscriptHeader />
+      <div className="transcript-item">
+        <span className="header-item">
+          <TranscriptHeader />
+          <ListenButton toggleListening={this.toggleListening} listening={this.state.listening} />
+        </span>
         <Recorder
           listening={this.state.listening}
           toggleListening={this.toggleListening}
