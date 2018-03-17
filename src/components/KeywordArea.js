@@ -2,14 +2,20 @@ import React from 'react';
 
 const KeywordArea = props => {
   return (
-    <div>
-      KeywordArea
-      <ul>
-        {props.keywords
-          .sort()
-          .reverse()
-          .map((keyword, index) => <li key={index}>{keyword.word}</li>)}
-      </ul>
+    <div className="keyword-area">
+      {props.keywords.length > 0 ? (
+        <div>
+          <h2>Keywords</h2>
+          <ul>
+            {props.keywords
+              .sort()
+              .reverse()
+              .map((keyword, index) => <li key={index}>{keyword.word}</li>)}
+          </ul>
+        </div>
+      ) : (
+        <div className="keyword-area" />
+      )}
     </div>
   );
 };

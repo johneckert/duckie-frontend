@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import HeroDuck from '../components/HeroDuck';
 import TranscriptionContainer from './TranscriptionContainer';
 import KeywordArea from '../components/KeywordArea';
@@ -21,7 +20,6 @@ class ConversationContainer extends Component {
   render() {
     return (
       <div>
-        <Header />
         <HeroDuck />
         <TranscriptionContainer user={this.state.user} getKeyWords={this.getKeyWords} />
         <KeywordArea keywords={this.state.keywords} />

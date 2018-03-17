@@ -4,9 +4,8 @@ import VoiceRecognition from '../react-voice-components/VoiceRecognition';
 const Recorder = props => {
   return (
     <div>
-      Recorder
-      <button onClick={props.toggleListening}>
-        {props.listening ? 'Stop Listening' : 'Start Listening'}
+      <button onClick={props.toggleListening} className="listen-button">
+        {props.listening ? 'STOP LISTENING' : 'START LISTENING'}
       </button>
       {props.listening ? (
         <VoiceRecognition
