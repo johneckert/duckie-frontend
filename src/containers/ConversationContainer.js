@@ -9,7 +9,8 @@ class ConversationContainer extends Component {
       id: 1,
       username: 'John'
     },
-    keywords: []
+    keywords: [],
+    colors: ['royal', 'gold', 'red-orange', 'aqua', 'mellow-yellow']
   };
 
   getKeyWords = json => {
@@ -21,8 +22,12 @@ class ConversationContainer extends Component {
     return (
       <div>
         <HeroDuck />
-        <TranscriptionContainer user={this.state.user} getKeyWords={this.getKeyWords} />
-        <KeywordArea keywords={this.state.keywords} />
+        <TranscriptionContainer
+          user={this.state.user}
+          getKeyWords={this.getKeyWords}
+          colors={this.state.colors}
+        />
+        <KeywordArea keywords={this.state.keywords} colors={this.state.colors} />
       </div>
     );
   }

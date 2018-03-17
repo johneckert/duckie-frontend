@@ -6,7 +6,7 @@ const Transcript = props => {
       {props.transcript === '' ? (
         <div className="instruction-text">Press Start Listening to Begin</div>
       ) : (
-        props.transcript
+        <div className="transcript-text">{props.transcript}</div>
       )}
     </div>
   );

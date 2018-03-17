@@ -10,7 +10,11 @@ const KeywordArea = props => {
             {props.keywords
               .sort()
               .reverse()
-              .map((keyword, index) => <li key={index}>{keyword.word}</li>)}
+              .map((keyword, index) => (
+                <li key={index} className={props.colors[index % props.colors.length]}>
+                  {keyword.word}
+                </li>
+              ))}
           </ul>
         </div>
       ) : (
