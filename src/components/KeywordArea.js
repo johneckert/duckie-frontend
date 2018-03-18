@@ -1,4 +1,5 @@
 import React from 'react';
+import BubbleChart from './BubbleChart';
 
 const KeywordArea = props => {
   return (
@@ -6,16 +7,7 @@ const KeywordArea = props => {
       {props.keywords.length > 0 ? (
         <div>
           <h2>Keywords</h2>
-          <ul>
-            {props.keywords
-              .sort()
-              .reverse()
-              .map((keyword, index) => (
-                <li key={index} className={props.colors[index % props.colors.length]}>
-                  {keyword.word}
-                </li>
-              ))}
-          </ul>
+          <BubbleChart keywords={props.keywords} />
         </div>
       ) : (
         <div className="keyword-area" />
@@ -25,3 +17,16 @@ const KeywordArea = props => {
 };
 
 export default KeywordArea;
+
+{
+  /* <ul>
+  {props.keywords
+    .sort()
+    .reverse()
+    .map((keyword, index) => (
+      <li key={index} className={keyword.color}>
+        {keyword.word}
+      </li>
+    ))}
+</ul>; */
+}

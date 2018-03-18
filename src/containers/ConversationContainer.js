@@ -14,8 +14,12 @@ class ConversationContainer extends Component {
   };
 
   getKeyWords = json => {
-    this.setState({ keywords: json });
-    console.log('state after:', this.state.keywords);
+    //assign a color to each keyword
+    const keywords = json.map((keyword, index) => {
+      return { ...keyword, color: this.state.colors[index % this.state.colors.length] };
+    });
+    //add array of keywords to state
+    this.setState({ keywords: keywords });
   };
 
   render() {
