@@ -9,8 +9,8 @@ class TranscriptionContainer extends React.Component {
   state = {
     conversation: {
       user_id: null,
-      transcript: ''
-      // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
+      transcript:
+        'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
     },
     listening: false
   };
@@ -47,19 +47,21 @@ class TranscriptionContainer extends React.Component {
   };
 
   createConversation = () => {
-    return fetch(BASE_URL + 'users/' + this.props.user.id + '/conversations', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.state.conversation)
-    })
-      .then(keywords => keywords.json())
-      .then(json => {
-        console.log(('response:', json));
-        this.props.getKeyWords(json);
-      });
+    if (this.state.conversation.transcript !== '') {
+      return fetch(BASE_URL + 'users/' + this.props.user.id + '/conversations', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state.conversation)
+      })
+        .then(keywords => keywords.json())
+        .then(json => {
+          console.log(('response:', json));
+          this.props.getKeyWords(json);
+        });
+    }
   };
 
   render() {

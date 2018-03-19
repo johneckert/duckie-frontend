@@ -6,6 +6,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "d3": "^4.13.0",
+    "d3-force": "^1.1.0",
     "react": "^16.2.0",
     "react-audio-recorder": "^2.0.1",
     "react-dom": "^16.2.0",

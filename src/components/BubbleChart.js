@@ -2,6 +2,7 @@ import React from 'react';
 import * as d3 from 'd3';
 
 class BubbleChart extends React.Component {
+  //certainly don't need all of these
   componentDidMount() {
     this.generateBubbleChart();
   }
@@ -14,30 +15,6 @@ class BubbleChart extends React.Component {
   }
 
   getRandomPosition = (max, min) => Math.random() * (max - min) + min;
-
-  // buildChart() {
-  //   return (
-  //     <svg width="1160" height="300" id="bubbleCanvas">
-  //       {this.props.keywords.map(keyword => {
-  //         return (
-  //           <g key={keyword.id} ref="bubbleWithText">
-  //             <circle
-  //               className={`${keyword.color}-bubble`}
-  //               cx={this.getRandomPosition(1160 - keyword.relevance * 100, keyword.relevance * 100)}
-  //               cy={this.getRandomPosition(300 - keyword.relevance * 100, keyword.relevance * 100)}
-  //               r={keyword.relevance * 100}
-  //               ref="bubble"
-  //               fill={keyword.color}
-  //             />
-  //             <text x="50%" y="50%" text-anchor="middle">
-  //               {keyword.text}
-  //             </text>
-  //           </g>
-  //         );
-  //       })}
-  //     </svg>
-  //   );
-  // }
 
   generateBubbleChart = () => {
     //chart size
@@ -103,6 +80,45 @@ class BubbleChart extends React.Component {
       .attr('y', (d, i) => d.cy)
       .attr('text-anchor', 'middle')
       .text((d, i) => d.word);
+
+    //force?  <--- HOW THE FUCK DO I DO THIS
+    const ticked = () => {
+      //grab circles
+      const updateCircle = d3
+        .select('svg')
+        .selectAll('circle')
+        .data(nodeList);
+      //update position
+      updateCircle
+        .enter()
+        .append('circle')
+        .attr('r', d => d.r)
+        .merge(updateCircle)
+        .attr('cx', d => d.cx)
+        .attr('cy', d => d.cy);
+      updateCircle.exit().remove();
+      //grab text
+      const updateText = d3
+        .select('svg')
+        .selectAll('text')
+        .data(nodeList);
+      //update position
+      updateText
+        .enter()
+        .append('text')
+        .attr('r', d => d.r)
+        .merge(updateText)
+        .attr('cx', d => d.cx)
+        .attr('cy', d => d.cy);
+      updateText.exit().remove();
+    };
+
+    const simulation = d3
+      .forceSimulation(nodeList)
+      .force('charge', d3.forceManyBody().strength(-20))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      // .force('collision', d3.forceCollide().radius(d => d.r))
+      .on('tick', ticked);
 
     console.log(circleGroup);
   };
