@@ -3,14 +3,14 @@ import * as d3 from 'd3';
 
 class BubbleChart extends React.Component {
   componentDidMount() {
-    this.attemptingD3();
+    this.generateBubbleChart();
   }
   componentDidUpdate() {
-    this.attemptingD3();
+    this.generateBubbleChart();
   }
 
   componentWillReceiveProps() {
-    this.attemptingD3();
+    this.generateBubbleChart();
   }
 
   getRandomPosition = (max, min) => Math.random() * (max - min) + min;
@@ -39,20 +39,11 @@ class BubbleChart extends React.Component {
   //   );
   // }
 
-  attemptingD3 = () => {
+  generateBubbleChart = () => {
     //chart size
     const width = 1160;
     const height = 300;
     const keywords = this.props.keywords;
-    //create svg
-    const svg = d3
-      .select(this.refs.chartContainer)
-      .append('svg')
-      .attr('height', height)
-      .attr('width', width)
-      .append('g')
-      .attr('transform', 'translate(0,0)');
-
     //convert color name to hex
     const translateColor = name => {
       switch (name) {
@@ -69,28 +60,51 @@ class BubbleChart extends React.Component {
       }
     };
 
-    const createCircles = keywords => {
-      const circles = svg
-        .selectAll('.keyword')
-        .data(keywords)
-        .enter()
-        .append('circle')
-        .attr('ref', 'keyword')
-        .attr('r', (d, i) => d.relevance * 100)
-        .style('fill', (d, i) => translateColor(d.color))
-        .attr('cx', (d, i) => {
-          return this.getRandomPosition(1160 - d.relevance * 100, d.relevance * 100);
-        })
-        .attr('cy', (d, i) => {
-          return this.getRandomPosition(300 - d.relevance * 100, d.relevance * 100);
-        })
-        .append('text', (d, i) => d.word)
-        .attr('class', 'bubble');
-      console.log(circles);
-      return circles;
-    };
+    //generate node list
+    const nodeList = this.props.keywords.map(k => {
+      const cx = this.getRandomPosition(1160 - k.relevance * 100, k.relevance * 100);
+      const cy = this.getRandomPosition(300 - k.relevance * 100, k.relevance * 100);
+      const r = 50 + k.relevance * 60;
+      const color = translateColor(k.color);
+      const word = k.word;
+      return { cx: cx, cy: cy, r: r, color: color, word: word };
+    });
 
-    svg.append('d', createCircles(keywords));
+    //create svg canvas
+    const svg = d3
+      .select(this.refs.chartContainer)
+      .append('svg')
+      .attr('height', height)
+      .attr('width', width)
+      .attr('id', 'chartContainer');
+
+    //create svg group
+    const circleGroup = d3
+      .select('#chartContainer')
+      .selectAll(this.refs.keyword) //this line is necessary WTF does it do?
+      .data(nodeList)
+      .enter()
+      .append('g');
+    //add circle to group
+    circleGroup
+      .append('circle')
+      .attr('ref', 'keyword')
+      .attr('r', (d, i) => d.r)
+      .style('fill', (d, i) => d.color)
+      .attr('cx', (d, i) => d.cx)
+      .attr('cy', (d, i) => d.cy);
+
+    //add text to group
+    circleGroup
+      .append('text')
+      .attr('ref', 'keyword')
+      .attr('class', 'bubble')
+      .attr('x', (d, i) => d.cx)
+      .attr('y', (d, i) => d.cy)
+      .attr('text-anchor', 'middle')
+      .text((d, i) => d.word);
+
+    console.log(circleGroup);
   };
 
   render() {

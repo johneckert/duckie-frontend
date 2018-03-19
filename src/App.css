@@ -185,7 +185,7 @@ body {
   color: var(--midnight);
 }
 
-.royal-bubble {
+/* .royal-bubble {
   fill: var(--royal);
   font-family: Sarala;
   font-size: 18px;
@@ -248,7 +248,7 @@ body {
   letter-spacing: normal;
   text-align: center;
   color: var(--midnight);
-}
+} */
 
 /* Conversation Layout */
 
