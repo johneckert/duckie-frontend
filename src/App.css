@@ -153,6 +153,8 @@ body {
   grid-row-end: row-g;
 }
 
+/* Word Colors */
+
 .royal {
   color: var(--royal);
 }
@@ -171,6 +173,81 @@ body {
 
 .mellow-yellow {
   color: var(--mellow-yellow);
+}
+
+/* Bubbles */
+
+.bubble {
+  font-family: Sarala;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--midnight);
+}
+
+.royal-bubble {
+  fill: var(--royal);
+  font-family: Sarala;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--midnight);
+}
+
+.gold-bubble {
+  fill: var(--gold);
+  font-family: Sarala;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--midnight);
+}
+
+.red-orange-bubble {
+  fill: var(--red-orange);
+  font-family: Sarala;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--midnight);
+}
+
+.aqua-bubble {
+  fill: var(--aqua);
+  font-family: Sarala;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--midnight);
+}
+
+.mellow-yellow-bubble {
+  fill: var(--mellow-yellow);
+  font-family: Sarala;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--midnight);
 }
 
 /* Conversation Layout */

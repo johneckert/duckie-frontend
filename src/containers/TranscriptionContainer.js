@@ -9,7 +9,8 @@ class TranscriptionContainer extends React.Component {
   state = {
     conversation: {
       user_id: null,
-      transcript: ''
+      transcript:
+        'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
     },
     listening: false
   };
@@ -75,7 +76,10 @@ class TranscriptionContainer extends React.Component {
           handleSpeechEnd={this.handleSpeechEnd}
           handleResult={this.handleResult}
         />
-        <Transcript transcript={this.state.conversation.transcript} />
+        <Transcript
+          transcript={this.state.conversation.transcript}
+          listening={this.state.listening}
+        />
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { Component } from 'react';
 class VoiceRecognition extends Component {
   constructor(props) {
     super(props);
-
+    // check to see if supported
     const SpeechRecognition =
       window.SpeechRecognition ||
       window.webkitSpeechRecognition ||
