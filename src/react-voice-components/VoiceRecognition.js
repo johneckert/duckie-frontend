@@ -45,7 +45,8 @@ class VoiceRecognition extends Component {
     }
 
     this.props.onResult({ interimTranscript, finalTranscript });
-    //reboot speech to text.
+    //reboot speech to text every time there is a result.
+    console.log('reboot');
     this.continue();
   };
 
@@ -54,20 +55,17 @@ class VoiceRecognition extends Component {
   };
 
   stop = () => {
-    console.log('STOP IN VOICE');
     this.recognition.stop();
   };
 
-  //how do i execute this??????
   continue = () => {
     this.recognition.stop();
     setTimeout(() => {
       this.recognition.start();
-    }, 1000);
+    }, 500);
   };
 
   abort = () => {
-    console.log('abort!');
     this.recognition.abort();
   };
 

@@ -6,11 +6,13 @@ class BubbleChart extends React.Component {
   componentDidMount() {
     this.generateBubbleChart();
   }
-  componentDidUpdate() {
+
+  componentWillReceiveProps() {
+    this.clearBubbleChart();
     this.generateBubbleChart();
   }
 
-  componentWillReceiveProps() {
+  componentDidUpdate() {
     this.generateBubbleChart();
   }
 
@@ -133,6 +135,10 @@ class BubbleChart extends React.Component {
     //   .on('tick', ticked);
 
     console.log(circleGroup);
+  };
+
+  clearBubbleChart = () => {
+    d3.select(this.refs.chartContainer).remove();
   };
 
   render() {
