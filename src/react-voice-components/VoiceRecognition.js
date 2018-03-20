@@ -52,7 +52,16 @@ class VoiceRecognition extends Component {
   };
 
   stop = () => {
+    console.log('STOP IN VOICE');
     this.recognition.stop();
+  };
+
+  //how do i execute this??????
+  continue = () => {
+    this.recognition.stop();
+    setTimeout(() => {
+      this.recognition.start();
+    }, 1000);
   };
 
   abort = () => {

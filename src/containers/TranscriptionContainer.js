@@ -16,21 +16,21 @@ class TranscriptionContainer extends React.Component {
     listening: false
   };
 
+  speechInterval;
+
   componentDidMount() {
     this.createConversation();
   }
 
   toggleListening = () => {
-    this.setState({ listening: !this.state.listening }, () => {
-      setInterval(() => this.updateConversation, 10000);
-    });
+    this.setState({ listening: !this.state.listening });
   };
 
   //Executes when speech to text begins listening
   handleSpeechBegin = event => {
     console.log('Begin');
     this.createConversation();
-    const postInterval = setInterval(this.updateConversation, 10000);
+    this.speechInterval = setInterval(this.updateConversation, 10000);
   };
   //During speech to text updates transcript in state.
   handleResult = event => {
@@ -44,10 +44,11 @@ class TranscriptionContainer extends React.Component {
     );
   };
 
-  //Executes when speech to text stops listening
+  //Executes when stops listening is pressed
   handleSpeechEnd = event => {
     console.log('End', this.state.conversation);
     this.updateConversation();
+    clearInterval(this.speechInterval);
   };
 
   createConversation = () => {
@@ -101,6 +102,7 @@ class TranscriptionContainer extends React.Component {
           listening={this.state.listening}
           toggleListening={this.toggleListening}
           handleSpeechBegin={this.handleSpeechBegin}
+          handleSpeechContinue={this.handleSpeechContinue}
           handleSpeechEnd={this.handleSpeechEnd}
           handleResult={this.handleResult}
         />
