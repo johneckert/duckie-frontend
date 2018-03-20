@@ -45,6 +45,8 @@ class VoiceRecognition extends Component {
     }
 
     this.props.onResult({ interimTranscript, finalTranscript });
+    //reboot speech to text.
+    this.continue();
   };
 
   start = () => {
@@ -65,6 +67,7 @@ class VoiceRecognition extends Component {
   };
 
   abort = () => {
+    console.log('abort!');
     this.recognition.abort();
   };
 

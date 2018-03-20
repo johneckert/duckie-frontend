@@ -32,6 +32,7 @@ class TranscriptionContainer extends React.Component {
     this.createConversation();
     this.updateInterval = setInterval(this.updateConversation, 10000);
   };
+
   //During speech to text updates transcript in state.
   handleResult = event => {
     let newText = event.finalTranscript;
