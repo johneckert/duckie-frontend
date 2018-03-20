@@ -10,6 +10,7 @@ const Recorder = props => {
           onStart={props.handleSpeechBegin}
           onEnd={props.handleSpeechEnd}
           onResult={props.handleResult}
+          endSentence={props.endSentence}
         />
       ) : null}
     </div>

@@ -27,7 +27,9 @@ class ConversationContainer extends Component {
       return keyword;
     });
     //add array of keywords to state
-    this.setState({ keywords: keywords });
+    this.setState({ keywords: keywords }, () => {
+      console.log(this.state.keywords);
+    });
   };
 
   render() {

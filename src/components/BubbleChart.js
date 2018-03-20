@@ -8,11 +8,6 @@ class BubbleChart extends React.Component {
     this.generateBubbleChart();
   }
 
-  // componentWillReceiveProps() {
-  //   this.clearBubbleChart();
-  //   this.generateBubbleChart();
-  // }
-
   componentDidUpdate() {
     console.log('did udate');
     this.clearBubbleChart();
@@ -129,14 +124,16 @@ class BubbleChart extends React.Component {
     //     .attr('cy', d => d.cy);
     //   updateText.exit().remove();
     // };
-
-    //FIGURE OUT FORCE
+    //
+    // //FIGURE OUT FORCE
     // const simulation = d3
     //   .forceSimulation(nodeList)
     //   .force('charge', d3.forceManyBody().strength(-20))
     //   .force('center', d3.forceCenter(width / 2, height / 2))
     //   // .force('collision', d3.forceCollide().radius(d => d.r))
     //   .on('tick', ticked);
+    // // debugger;
+    // simulation.tick();
 
     console.log(circleGroup);
   };

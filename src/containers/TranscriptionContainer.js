@@ -45,6 +45,20 @@ class TranscriptionContainer extends React.Component {
     );
   };
 
+  endSentence = () => {
+    // add punctuation
+    let endedSentence = this.state.conversation.transcript.concat('. ');
+    //format text (capitalize first letter, etc)
+    let updatedTranscript = endedSentence.replace(
+      /.+?[\.\?\!](\s|$)/g,
+      txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    );
+    this.setState(
+      { conversation: { ...this.state.conversation, transcript: updatedTranscript } },
+      () => {}
+    );
+  };
+
   //Executes when stops listening is pressed
   handleSpeechEnd = event => {
     this.updateConversation();
@@ -104,6 +118,7 @@ class TranscriptionContainer extends React.Component {
           handleSpeechContinue={this.handleSpeechContinue}
           handleSpeechEnd={this.handleSpeechEnd}
           handleResult={this.handleResult}
+          endSentence={this.endSentence}
         />
         <Transcript
           transcript={this.state.conversation.transcript}

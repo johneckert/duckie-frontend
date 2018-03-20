@@ -17,16 +17,3 @@ const KeywordArea = props => {
 };
 
 export default KeywordArea;
-
-{
-  /* <ul>
-  {props.keywords
-    .sort()
-    .reverse()
-    .map((keyword, index) => (
-      <li key={index} className={keyword.color}>
-        {keyword.word}
-      </li>
-    ))}
-</ul>; */
-}

@@ -60,6 +60,7 @@ class VoiceRecognition extends Component {
 
   continue = () => {
     this.recognition.stop();
+    this.props.endSentence();
     setTimeout(() => {
       this.recognition.start();
     }, 500);
