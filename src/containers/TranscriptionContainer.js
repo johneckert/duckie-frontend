@@ -17,19 +17,13 @@ class TranscriptionContainer extends React.Component {
   };
 
   componentDidMount() {
-    // this.setState({ conversation: { ...this.state.conversation, user_id: this.props.user.id } });
     this.createConversation();
   }
 
   toggleListening = () => {
-    let postInterval;
-    this.setState(
-      { listening: !this.state.listening },
-      () =>
-        this.state.listening
-          ? (postInterval = setInterval(this.updateConversation, 10000))
-          : clearInterval(postInterval)
-    );
+    this.setState({ listening: !this.state.listening }, () => {
+      setInterval(() => this.updateConversation, 10000);
+    });
   };
 
   //Executes when speech to text begins listening
