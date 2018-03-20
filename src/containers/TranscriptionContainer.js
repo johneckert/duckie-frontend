@@ -30,8 +30,9 @@ class TranscriptionContainer extends React.Component {
   handleSpeechBegin = event => {
     console.log('Begin');
     this.createConversation();
-    this.updateInterval = setInterval(this.updateConversation, 10000);
+    this.updateInterval = setInterval(this.updateConversation, 6500);
   };
+
   //During speech to text updates transcript in state.
   handleResult = event => {
     let newText = event.finalTranscript;
@@ -46,7 +47,6 @@ class TranscriptionContainer extends React.Component {
 
   //Executes when stops listening is pressed
   handleSpeechEnd = event => {
-    console.log('End', this.state.conversation);
     this.updateConversation();
     clearInterval(this.updateInterval);
   };
@@ -62,6 +62,7 @@ class TranscriptionContainer extends React.Component {
     })
       .then(response => response.json())
       .then(json => {
+        console.log('create fetch response');
         this.setState({
           conversation: json
         });
@@ -69,8 +70,6 @@ class TranscriptionContainer extends React.Component {
   };
 
   updateConversation = () => {
-    console.log('b4 update:', this.state.conversation);
-    console.log('b4 update id ', this.state.conversation.id);
     if (this.state.conversation.transcript !== '') {
       return fetch(
         BASE_URL + 'users/' + this.props.user.id + '/conversations/' + this.state.conversation.id,
@@ -85,7 +84,7 @@ class TranscriptionContainer extends React.Component {
       )
         .then(keywords => keywords.json())
         .then(json => {
-          console.log('response:', json);
+          console.log('updated fetch response');
           this.props.getKeyWords(json);
         });
     }
