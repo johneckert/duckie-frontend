@@ -16,7 +16,7 @@ class TranscriptionContainer extends React.Component {
     listening: false
   };
 
-  speechInterval;
+  updateInterval;
 
   componentDidMount() {
     this.createConversation();
@@ -30,7 +30,7 @@ class TranscriptionContainer extends React.Component {
   handleSpeechBegin = event => {
     console.log('Begin');
     this.createConversation();
-    this.speechInterval = setInterval(this.updateConversation, 10000);
+    this.updateInterval = setInterval(this.updateConversation, 10000);
   };
   //During speech to text updates transcript in state.
   handleResult = event => {
@@ -48,7 +48,7 @@ class TranscriptionContainer extends React.Component {
   handleSpeechEnd = event => {
     console.log('End', this.state.conversation);
     this.updateConversation();
-    clearInterval(this.speechInterval);
+    clearInterval(this.updateInterval);
   };
 
   createConversation = () => {
