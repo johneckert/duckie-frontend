@@ -8,30 +8,40 @@ import BASE_URL from '../urls.js';
 class TranscriptionContainer extends React.Component {
   state = {
     conversation: {
+      id: null,
       user_id: null,
-      transcript:
-        'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
+      transcript: '', // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
+      created_at: ''
     },
     listening: false
   };
 
   componentDidMount() {
-    this.setState({ conversation: { ...this.state.conversation, user_id: this.props.user.id } });
+    // this.setState({ conversation: { ...this.state.conversation, user_id: this.props.user.id } });
+    this.createConversation();
   }
 
   toggleListening = () => {
-    this.setState({ listening: !this.state.listening });
+    let postInterval;
+    this.setState(
+      { listening: !this.state.listening },
+      () =>
+        this.state.listening
+          ? (postInterval = setInterval(this.updateConversation, 10000))
+          : clearInterval(postInterval)
+    );
   };
 
   //Executes when speech to text begins listening
   handleSpeechBegin = event => {
     console.log('Begin');
+    this.createConversation();
+    const postInterval = setInterval(this.updateConversation, 10000);
   };
   //During speech to text updates transcript in state.
   handleResult = event => {
     let newText = event.finalTranscript;
     let updatedTranscript = this.state.conversation.transcript.concat(newText);
-    console.log('updatedTranscript: ', updatedTranscript);
     this.setState(
       { conversation: { ...this.state.conversation, transcript: updatedTranscript } },
       () => {
@@ -43,22 +53,44 @@ class TranscriptionContainer extends React.Component {
   //Executes when speech to text stops listening
   handleSpeechEnd = event => {
     console.log('End', this.state.conversation);
-    this.createConversation();
+    this.updateConversation();
   };
 
   createConversation = () => {
+    return fetch(BASE_URL + 'users/' + this.props.user.id + '/conversations', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.conversation)
+    })
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          conversation: json
+        });
+      });
+  };
+
+  updateConversation = () => {
+    console.log('b4 update:', this.state.conversation);
+    console.log('b4 update id ', this.state.conversation.id);
     if (this.state.conversation.transcript !== '') {
-      return fetch(BASE_URL + 'users/' + this.props.user.id + '/conversations', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.state.conversation)
-      })
+      return fetch(
+        BASE_URL + 'users/' + this.props.user.id + '/conversations/' + this.state.conversation.id,
+        {
+          method: 'PATCH',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(this.state.conversation)
+        }
+      )
         .then(keywords => keywords.json())
         .then(json => {
-          console.log(('response:', json));
+          console.log('response:', json);
           this.props.getKeyWords(json);
         });
     }
