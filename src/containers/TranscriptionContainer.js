@@ -70,8 +70,6 @@ class TranscriptionContainer extends React.Component {
   };
 
   updateConversation = () => {
-    console.log('b4 update:', this.state.conversation);
-    console.log('b4 update id ', this.state.conversation.id);
     if (this.state.conversation.transcript !== '') {
       return fetch(
         BASE_URL + 'users/' + this.props.user.id + '/conversations/' + this.state.conversation.id,

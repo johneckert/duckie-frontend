@@ -4,15 +4,18 @@ import * as d3 from 'd3';
 class BubbleChart extends React.Component {
   //certainly don't need all of these
   componentDidMount() {
+    console.log('didmount');
     this.generateBubbleChart();
   }
 
-  componentWillReceiveProps() {
-    this.clearBubbleChart();
-    this.generateBubbleChart();
-  }
+  // componentWillReceiveProps() {
+  //   this.clearBubbleChart();
+  //   this.generateBubbleChart();
+  // }
 
   componentDidUpdate() {
+    console.log('did udate');
+    this.clearBubbleChart();
     this.generateBubbleChart();
   }
 
@@ -64,6 +67,7 @@ class BubbleChart extends React.Component {
     const svg = d3
       .select(this.refs.chartContainer)
       .append('svg')
+      .attr('ref', 'canvas')
       .attr('height', height)
       .attr('width', width)
       .attr('id', 'chartContainer');
@@ -94,37 +98,37 @@ class BubbleChart extends React.Component {
       .attr('text-anchor', 'middle')
       .text((d, i) => d.word);
 
-    //force?  <--- HOW THE FUCK DO I DO THIS
-    const ticked = () => {
-      //grab circles
-      const updateCircle = d3
-        .select('svg')
-        .selectAll('circle')
-        .data(nodeList);
-      //update position
-      updateCircle
-        .enter()
-        .append('circle')
-        .attr('r', d => d.r)
-        .merge(updateCircle)
-        .attr('cx', d => d.cx)
-        .attr('cy', d => d.cy);
-      updateCircle.exit().remove();
-      //grab text
-      const updateText = d3
-        .select('svg')
-        .selectAll('text')
-        .data(nodeList);
-      //update position
-      updateText
-        .enter()
-        .append('text')
-        .attr('r', d => d.r)
-        .merge(updateText)
-        .attr('cx', d => d.cx)
-        .attr('cy', d => d.cy);
-      updateText.exit().remove();
-    };
+    // //force?  <--- HOW THE FUCK DO I DO THIS
+    // const ticked = () => {
+    //   //grab circles
+    //   const updateCircle = d3
+    //     .select('svg')
+    //     .selectAll('circle')
+    //     .data(nodeList);
+    //   //update position
+    //   updateCircle
+    //     .enter()
+    //     .append('circle')
+    //     .attr('r', d => d.r)
+    //     .merge(updateCircle)
+    //     .attr('cx', d => d.cx)
+    //     .attr('cy', d => d.cy);
+    //   updateCircle.exit().remove();
+    //   //grab text
+    //   const updateText = d3
+    //     .select('svg')
+    //     .selectAll('text')
+    //     .data(nodeList);
+    //   //update position
+    //   updateText
+    //     .enter()
+    //     .append('text')
+    //     .attr('r', d => d.r)
+    //     .merge(updateText)
+    //     .attr('cx', d => d.cx)
+    //     .attr('cy', d => d.cy);
+    //   updateText.exit().remove();
+    // };
 
     //FIGURE OUT FORCE
     // const simulation = d3
@@ -138,7 +142,7 @@ class BubbleChart extends React.Component {
   };
 
   clearBubbleChart = () => {
-    d3.select(this.refs.chartContainer).remove();
+    d3.selectAll('g > *').remove();
   };
 
   render() {
