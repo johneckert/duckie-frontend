@@ -39,12 +39,22 @@ class BubbleChart extends React.Component {
 
     //generate node list
     const nodeList = this.props.keywords.map(k => {
-      const cx = this.getRandomPosition(1160 - k.relevance * 100, k.relevance * 100);
+      const cx = this.getRandomPosition(1160 - k.relevance * 100, k.relevance * 100); //READO THIS LINE WHHEN FORCE WORKS - FOR NOW ITS FAKED
       const cy = this.getRandomPosition(300 - k.relevance * 100, k.relevance * 100);
       const r = 50 + k.relevance * 60;
       const color = translateColor(k.color);
       const word = k.word;
       return { cx: cx, cy: cy, r: r, color: color, word: word };
+    });
+
+    nodeList.map((k, i) => {
+      if (i === 0) {
+        k.cx = 10 + k.r;
+        k.cy = k.cy + k.r / 2;
+      } else {
+        k.cx = nodeList[i - 1].cx + nodeList[i - 1].r + k.r;
+        k.cy = k.cy + k.r / 2;
+      }
     });
 
     //create svg canvas
@@ -58,7 +68,7 @@ class BubbleChart extends React.Component {
     //create svg group
     const circleGroup = d3
       .select('#chartContainer')
-      .selectAll(this.refs.keyword) //this line is necessary WTF does it do?
+      .selectAll(this.refs.keyword)
       .data(nodeList)
       .enter()
       .append('g');
@@ -113,12 +123,13 @@ class BubbleChart extends React.Component {
       updateText.exit().remove();
     };
 
-    const simulation = d3
-      .forceSimulation(nodeList)
-      .force('charge', d3.forceManyBody().strength(-20))
-      .force('center', d3.forceCenter(width / 2, height / 2))
-      // .force('collision', d3.forceCollide().radius(d => d.r))
-      .on('tick', ticked);
+    //FIGURE OUT FORCE
+    // const simulation = d3
+    //   .forceSimulation(nodeList)
+    //   .force('charge', d3.forceManyBody().strength(-20))
+    //   .force('center', d3.forceCenter(width / 2, height / 2))
+    //   // .force('collision', d3.forceCollide().radius(d => d.r))
+    //   .on('tick', ticked);
 
     console.log(circleGroup);
   };
