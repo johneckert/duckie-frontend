@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import TranscriptHeader from '../components/TranscriptHeader';
 import Recorder from '../components/Recorder.js';
 import Transcript from '../components/Transcript';
@@ -6,15 +7,15 @@ import ListenButton from '../components/ListenButton';
 import BASE_URL from '../urls.js';
 
 class TranscriptionContainer extends React.Component {
-  state = {
-    conversation: {
-      id: null,
-      user_id: null,
-      transcript: '', // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
-      created_at: ''
-    },
-    listening: false
-  };
+  // state = {
+  //   conversation: {
+  //     id: null,
+  //     user_id: null,
+  //     transcript: '', // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
+  //     created_at: ''
+  //   },
+  //   listening: false
+  // };
 
   updateInterval;
 
@@ -109,10 +110,9 @@ class TranscriptionContainer extends React.Component {
       <div className="transcript-item">
         <span className="header-item">
           <TranscriptHeader />
-          <ListenButton toggleListening={this.toggleListening} listening={this.state.listening} />
+          <ListenButton toggleListening={this.toggleListening} />
         </span>
         <Recorder
-          listening={this.state.listening}
           toggleListening={this.toggleListening}
           handleSpeechBegin={this.handleSpeechBegin}
           handleSpeechContinue={this.handleSpeechContinue}
@@ -120,13 +120,20 @@ class TranscriptionContainer extends React.Component {
           handleResult={this.handleResult}
           endSentence={this.endSentence}
         />
-        <Transcript
-          transcript={this.state.conversation.transcript}
-          listening={this.state.listening}
-        />
+        <Transcript />
       </div>
     );
   }
 }
 
-export default TranscriptionContainer;
+const mapStateToProps = state => {
+  return {
+    //I think this all just gets passed
+    user: state.user,
+    colors: state.colors,
+    conversation: conversation,
+    listening: listening
+  };
+};
+
+export default connect(mapStateToProps)(TranscriptionContainer);

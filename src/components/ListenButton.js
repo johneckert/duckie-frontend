@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const ListenButton = props => {
   return (
@@ -8,4 +9,10 @@ const ListenButton = props => {
   );
 };
 
-export default ListenButton;
+const mapStateToProps = state => {
+  return {
+    listening: state.listening
+  };
+};
+
+export default connect(mapStateToProps)(ListenButton);

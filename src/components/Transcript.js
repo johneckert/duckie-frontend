@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const Transcript = props => {
   return (
@@ -12,4 +13,8 @@ const Transcript = props => {
   );
 };
 
-export default Transcript;
+const mapStateToProps = state => {
+  return { transcript: state.conversation.transcript };
+};
+
+export default connect(mapStateToProps)(Transcript);

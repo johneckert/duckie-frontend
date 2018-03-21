@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import VoiceRecognition from '../react-voice-components/VoiceRecognition';
 
 const Recorder = props => {
@@ -17,4 +18,8 @@ const Recorder = props => {
   );
 };
 
-export default Recorder;
+const mapStateToProps = state => {
+  return { listening: listening };
+};
+
+export default connect(mapStateToProps)(Recorder);
