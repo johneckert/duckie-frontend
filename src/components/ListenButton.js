@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { toggleListening } from '../actions/actions';
 
 const ListenButton = props => {
   return (
-    <button onClick={props.toggleListening} className="listen-button">
+    <button onClick={props.dispatchToggleListening} className="listen-button">
       {props.listening ? 'STOP LISTENING' : 'START LISTENING'}
     </button>
   );
@@ -15,4 +16,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ListenButton);
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchToggleListening: () => dispatch(toggleListening())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListenButton);

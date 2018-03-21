@@ -1,13 +1,23 @@
+import {
+  TOGGLE_LISTENING,
+  GET_KEYWORDS,
+  UPDATE_TRANSCRIPT,
+  CREATE_CONVERSATION,
+  CREATED_CONVERSATION,
+  UPDATE_CONVERSATION,
+  UPDATED_CONVERSATION
+} from '../actions/actions';
+
 const defaultState = {
   conversation: {
-    id: 1,
-    user_id: 1,
+    id: '',
+    user_id: '',
     transcript: '', // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
     created_at: ''
   },
   listening: false,
   user: {
-    id: 1,
+    id: '1',
     username: 'John'
   },
   keywords: [
@@ -22,9 +32,21 @@ const defaultState = {
 };
 
 const duckieReducer = (state = defaultState, action) => {
-  if (action.type === 'PLACEHOLDER') {
-  } else {
-    return state;
+  switch (action.type) {
+    case TOGGLE_LISTENING:
+      return { ...state, listening: !state.listening };
+    case GET_KEYWORDS:
+      //assign a color to each keyword
+      const keywords = action.payload.map((keyword, index) => {
+        keyword.color = state.colors[index % state.colors.length];
+        return keyword;
+      });
+      //add array of keywords to state
+      return { ...state, keywords: keywords };
+    case UPDATE_TRANSCRIPT:
+      return { ...state, conversation: { ...state.conversation, transcript: action.payload } };
+    default:
+      return state;
   }
 };
 
