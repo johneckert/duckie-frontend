@@ -93,6 +93,13 @@ class BubbleChart extends React.Component {
       .attr('text-anchor', 'middle')
       .text((d, i) => d.word);
 
+    // force.on('end', () => {
+    //   //when force calculation ends do this:
+    //   circleGroup.attr('cx', d => d.x).attr('cy', d => d.y);
+    // });
+    //
+    // force.start;
+
     // //force?  <--- HOW THE FUCK DO I DO THIS
     // const ticked = () => {
     //   //grab circles
@@ -126,14 +133,26 @@ class BubbleChart extends React.Component {
     // };
     //
     // //FIGURE OUT FORCE
-    // const simulation = d3
-    //   .forceSimulation(nodeList)
-    //   .force('charge', d3.forceManyBody().strength(-20))
-    //   .force('center', d3.forceCenter(width / 2, height / 2))
-    //   // .force('collision', d3.forceCollide().radius(d => d.r))
+    // var simulation = d3
+    //   .forceSimulation()
+    //   .velocityDecay(0.2)
+    //   .force(
+    //     'x',
+    //     d3
+    //       .forceX()
+    //       .strength(forceStrength)
+    //       .x(center.x)
+    //   )
+    //   .force(
+    //     'y',
+    //     d3
+    //       .forceY()
+    //       .strength(forceStrength)
+    //       .y(center.y)
+    //   )
+    //   .force('charge', d3.forceManyBody().strength(charge))
     //   .on('tick', ticked);
     // // debugger;
-    // simulation.tick();
 
     console.log(circleGroup);
   };
