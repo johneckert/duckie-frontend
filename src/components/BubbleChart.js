@@ -167,7 +167,7 @@ class BubbleChart extends React.Component {
   }
 }
 
-mapStateToProps = state => {
+const mapStateToProps = state => {
   return { keywords: state.keywords };
 };
 

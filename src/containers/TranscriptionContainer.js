@@ -131,8 +131,8 @@ const mapStateToProps = state => {
     //I think this all just gets passed
     user: state.user,
     colors: state.colors,
-    conversation: conversation,
-    listening: listening
+    conversation: state.conversation,
+    listening: state.listening
   };
 };
 

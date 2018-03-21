@@ -19,7 +19,7 @@ const Recorder = props => {
 };
 
 const mapStateToProps = state => {
-  return { listening: listening };
+  return { listening: state.listening };
 };
 
 export default connect(mapStateToProps)(Recorder);

@@ -1,7 +1,7 @@
 const defaultState = {
   conversation: {
-    id: null,
-    user_id: null,
+    id: 1,
+    user_id: 1,
     transcript: '', // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
     created_at: ''
   },
