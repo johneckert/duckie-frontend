@@ -20,7 +20,10 @@ const defaultState = {
   listening: false,
   user: {
     id: '1',
-    username: 'John'
+    firstName: 'John',
+    lastName: 'Eckert',
+    email: 'johnteckert@gmail.com',
+    password: 'password'
   },
   keywords: [
     // { id: 1, word: 'javascript', relevance: 0.912565, color: 'royal' },
