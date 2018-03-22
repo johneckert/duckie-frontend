@@ -7,6 +7,8 @@ export const CREATING_CONVERSATION = 'CREATING_CONVERSATION';
 export const CREATED_CONVERSATION = 'CREATED_CONVERSATION';
 export const UPDATING_CONVERSATION = 'UPDATING_CONVERSATION';
 export const UPDATED_CONVERSATION = 'UPDATED_CONVERSATION';
+export const LOG_IN = 'LOG_IN';
+export const CREATE_USER = 'CREATE_USER';
 
 export const toggleListening = () => {
   return { type: TOGGLE_LISTENING };
@@ -18,6 +20,15 @@ export const getKeywords = json => {
 
 export const updateTranscript = updatedTranscript => {
   return { type: UPDATE_TRANSCRIPT, payload: updatedTranscript };
+};
+
+export const logIn = user => {
+  const dummyUser = { ...user, id: 1 };
+  return { type: LOG_IN, payload: dummyUser };
+};
+
+export const createUser = user => {
+  return { type: CREATE_USER, payload: user };
 };
 
 export const createConversation = (userId, conversation) => {

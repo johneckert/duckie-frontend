@@ -5,7 +5,9 @@ import {
   CREATE_CONVERSATION,
   CREATED_CONVERSATION,
   UPDATE_CONVERSATION,
-  UPDATED_CONVERSATION
+  UPDATED_CONVERSATION,
+  LOG_IN,
+  CREATE_USER
 } from '../actions/actions';
 
 const defaultState = {
@@ -59,6 +61,14 @@ const duckieReducer = (state = defaultState, action) => {
       });
       //add array of keywords to state
       return { ...state, keywords: updatekeywords };
+
+    case LOG_IN:
+      console.log('logIn', action.payload);
+      return { ...state, user: action.payload };
+
+    case CREATE_USER:
+      console.log(('create user:', action.payload));
+      return { ...state, user: action.payload };
 
     default:
       return state;

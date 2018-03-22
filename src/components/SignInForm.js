@@ -1,24 +1,51 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { logIn } from '../actions/actions';
 
-const SignInForm = props => {
-  const handleClick = event => {
-    event.preventDefault();
-    props.toggleLogIn();
+class SignInForm extends React.Component {
+  state = {
+    email: '',
+    password: ''
   };
 
-  return (
-    <div className="login-panel">
-      <h2>Sign In</h2>
-      <form>
-        <label for="email">EMAIL</label>
-        <input type="text" id="email" />
-        <label for="password">PASSWORD</label>
-        <input type="password" id="password" />
-        <button>SIGN IN</button>
-        <button onClick={event => handleClick(event)}>CREATE ACCOUNT</button>
-      </form>
-    </div>
-  );
+  handleToggleClick = event => {
+    event.preventDefault();
+    this.props.toggleLogIn();
+  };
+
+  handleSignInClick = event => {
+    event.preventDefault();
+    this.props.dispatchLogIn(this.state);
+  };
+
+  handleEmailChange = event => {
+    this.setState({ ...this.state, email: event.target.value });
+  };
+  handlePasswordChange = event => {
+    this.setState({ ...this.state, password: event.target.value });
+  };
+
+  render() {
+    return (
+      <div className="login-panel">
+        <h2>Sign In</h2>
+        <form>
+          <label htmlFor="email">EMAIL</label>
+          <input type="text" id="email" onChange={this.handleEmailChange} />
+          <label htmlFor="password">PASSWORD</label>
+          <input type="password" id="password" onChange={this.handlePasswordChange} />
+          <button onClick={event => this.handleSignInClick(event)}>SIGN IN</button>
+          <button onClick={event => this.handleToggleClick(event)}>CREATE ACCOUNT</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchLogIn: user => dispatch(logIn(user))
+  };
 };
 
-export default SignInForm;
+export default connect(null, mapDispatchToProps)(SignInForm);

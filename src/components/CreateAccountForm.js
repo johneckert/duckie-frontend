@@ -1,28 +1,63 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { logIn, createUser } from '../actions/actions';
 
-const CreateAccountForm = props => {
-  const handleClick = event => {
-    event.preventDefault();
-    props.toggleLogIn();
+class CreateAccountForm extends React.Component {
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
   };
 
-  return (
-    <div className="login-panel">
-      <h2>Create Account</h2>
-      <form>
-        <label for="firstName">FIRST NAME</label>
-        <input type="text" id="firstName" />
-        <label for="lastName">LAST NAME</label>
-        <input type="text" id="lastName" />
-        <label for="email">EMAIL</label>
-        <input type="text" id="email" />
-        <label for="password">PASSWORD</label>
-        <input type="password" id="password" />
-        <button>CONTINUE</button>
-        <button onClick={event => props.toggleLogIn(event)}>CANCEL</button>
-      </form>
-    </div>
-  );
+  handleCancelClick = event => {
+    event.preventDefault();
+    this.props.toggleLogIn();
+  };
+
+  handleCreateClick = event => {
+    event.preventDefault();
+    this.props.dispatchCreateUser(this.state);
+  };
+
+  handleFirstChange = event => {
+    this.setState({ ...this.state, firstName: event.target.value });
+  };
+  handleLastChange = event => {
+    this.setState({ ...this.state, lastName: event.target.value });
+  };
+  handleEmailChange = event => {
+    this.setState({ ...this.state, email: event.target.value });
+  };
+  handlePasswordChange = event => {
+    this.setState({ ...this.state, password: event.target.value });
+  };
+
+  render() {
+    return (
+      <div className="login-panel">
+        <h2>Create Account</h2>
+        <form>
+          <label htmlFor="firstName">FIRST NAME</label>
+          <input type="text" id="firstName" onChange={this.handleFirstChange} />
+          <label htmlFor="lastName">LAST NAME</label>
+          <input type="text" id="lastName" onChange={this.handleLastChange} />
+          <label htmlFor="email">EMAIL</label>
+          <input type="text" id="email" onChange={this.handleEmailChange} />
+          <label htmlFor="password">PASSWORD</label>
+          <input type="password" id="password" onChange={this.handlePasswordChange} />
+          <button onClick={event => this.handleCreateClick(event)}>CONTINUE</button>
+          <button onClick={event => this.handleCancelClick(event)}>CANCEL</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchCreateUser: user => dispatch(createUser(user))
+  };
 };
 
-export default CreateAccountForm;
+export default connect(null, mapDispatchToProps)(CreateAccountForm);
