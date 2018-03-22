@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import ConversationContainer from './containers/ConversationContainer.js';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,10 @@ class App extends Component {
     return (
       <div className="background">
         <Header />
-        <ConversationContainer />
+        <Switch>
+          <Route path="/conversation" component={ConversationContainer} />
+          <Redirect from="/" to="/conversation" />
+        </Switch>
       </div>
     );
   }
