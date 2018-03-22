@@ -35,6 +35,7 @@ const duckieReducer = (state = defaultState, action) => {
   switch (action.type) {
     case TOGGLE_LISTENING:
       return { ...state, listening: !state.listening };
+
     case GET_KEYWORDS:
       //assign a color to each keyword
       const keywords = action.payload.map((keyword, index) => {
@@ -43,8 +44,22 @@ const duckieReducer = (state = defaultState, action) => {
       });
       //add array of keywords to state
       return { ...state, keywords: keywords };
+
+    case CREATED_CONVERSATION:
+      return { ...state, conversation: action.payload };
+
     case UPDATE_TRANSCRIPT:
       return { ...state, conversation: { ...state.conversation, transcript: action.payload } };
+
+    case UPDATED_CONVERSATION:
+      //assign a color to each keyword
+      const updatekeywords = action.payload.map((keyword, index) => {
+        keyword.color = state.colors[index % state.colors.length];
+        return keyword;
+      });
+      //add array of keywords to state
+      return { ...state, keywords: updatekeywords };
+
     default:
       return state;
   }

@@ -2,7 +2,6 @@ import BASE_URL from '../urls.js';
 
 class ConversationApi {
   static create(userId, conversation) {
-    console.log('ConversationAPI', conversation);
     return fetch(BASE_URL + 'users/' + userId + '/conversations', {
       method: 'POST',
       headers: {
@@ -10,10 +9,7 @@ class ConversationApi {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(conversation)
-    }).then(response => {
-      return response;
-      response.json();
-    });
+    }).then(response => response.json());
   }
 
   static update(userId, conversation) {

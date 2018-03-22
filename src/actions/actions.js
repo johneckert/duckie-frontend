@@ -33,8 +33,7 @@ export const updateConversation = (userId, conversation) => {
   return function(dispatch) {
     dispatch({ type: UPDATING_CONVERSATION });
     ConversationApi.update(userId, conversation).then(keywordsJson => {
-      //this is retunring keywords as json -  what do i do in this case
-      // this.props.dispatchGetKeywords(json);
+      //this is retunring keywords as json
       dispatch({ type: UPDATED_CONVERSATION, payload: keywordsJson });
     });
   };

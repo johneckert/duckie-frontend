@@ -73,7 +73,7 @@ class VoiceRecognition extends Component {
   abort = () => {
     this.recognition.abort();
   };
-  ////////////////////////MOVE FROM TRANSCRIPTION CONTAINER
+
   handleSpeechBegin = event => {
     console.log('Begin');
     this.updateInterval = setInterval(() => {
@@ -103,7 +103,6 @@ class VoiceRecognition extends Component {
     this.props.dispatchUpdateTranscript(updatedTranscript);
   };
 
-  ///////////////////////////////////////////////////////////////
   componentWillReceiveProps({ stop }) {
     if (stop) {
       this.stop();
@@ -111,16 +110,6 @@ class VoiceRecognition extends Component {
   }
 
   componentDidMount() {
-    // const events = [
-    //   { name: 'start', action: this.props.onStart },
-    //   { name: 'end', action: this.props.onEnd },
-    //   { name: 'error', action: this.props.onError }
-    // ];
-    //
-    // events.forEach(event => {
-    //   this.recognition.addEventListener(event.name, event.action);
-    // });
-
     this.recognition.addEventListener('start', this.handleSpeechBegin);
     this.recognition.addEventListener('end', this.handleSpeechEnd);
 
@@ -134,7 +123,6 @@ class VoiceRecognition extends Component {
   }
 
   render() {
-    console.log('VR Props', this.props);
     return null;
   }
 }
@@ -151,11 +139,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  console.log('VR State from Redux', state);
   return {
-    //I think this all just gets passed
     user: state.user,
-    colors: state.colors,
     conversation: state.conversation,
     listening: state.listening
   };
