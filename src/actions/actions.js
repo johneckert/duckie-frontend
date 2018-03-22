@@ -1,4 +1,5 @@
 import ConversationApi from '../services/conversationApi';
+import UserApi from '../services/userApi';
 
 export const TOGGLE_LISTENING = 'TOGGLE_LISTENING';
 export const GET_KEYWORDS = 'GET_KEYWORDS';
@@ -7,7 +8,7 @@ export const CREATING_CONVERSATION = 'CREATING_CONVERSATION';
 export const CREATED_CONVERSATION = 'CREATED_CONVERSATION';
 export const UPDATING_CONVERSATION = 'UPDATING_CONVERSATION';
 export const UPDATED_CONVERSATION = 'UPDATED_CONVERSATION';
-export const LOG_IN = 'LOG_IN';
+export const LOGGED_IN = 'LOGGED_IN';
 export const CREATE_USER = 'CREATE_USER';
 
 export const toggleListening = () => {
@@ -22,9 +23,12 @@ export const updateTranscript = updatedTranscript => {
   return { type: UPDATE_TRANSCRIPT, payload: updatedTranscript };
 };
 
-export const logIn = user => {
-  const dummyUser = { ...user, id: 1 };
-  return { type: LOG_IN, payload: dummyUser };
+export const logIn = (email, password) => {
+  return function(dispatch) {
+    UserApi.login(email, password).then(user => {
+      dispatch({ type: LOGGED_IN, payload: user });
+    });
+  };
 };
 
 export const createUser = user => {

@@ -44,7 +44,7 @@ class SignInForm extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchLogIn: user => dispatch(logIn(user))
+    dispatchLogIn: ({ email, password }) => dispatch(logIn(email, password))
   };
 };
 
