@@ -7,8 +7,21 @@ class LoginContainer extends React.Component {
     haveAccount: true
   };
 
+  toggleLogIn = () => {
+    console.log('clicked!');
+    this.setState({ haveAccount: !this.state.haveAccount });
+  };
+
   render() {
-    return <div>{this.state.haveAccount ? <SignInForm /> : <CreateAccountForm />}</div>;
+    return (
+      <div>
+        {this.state.haveAccount ? (
+          <SignInForm toggleLogIn={this.toggleLogIn} />
+        ) : (
+          <CreateAccountForm toggleLogIn={this.toggleLogIn} />
+        )}
+      </div>
+    );
   }
 }
 
