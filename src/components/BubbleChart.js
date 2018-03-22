@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import * as d3 from 'd3';
 
 class BubbleChart extends React.Component {
@@ -166,4 +167,8 @@ class BubbleChart extends React.Component {
   }
 }
 
-export default BubbleChart;
+const mapStateToProps = state => {
+  return { keywords: state.keywords };
+};
+
+export default connect(mapStateToProps)(BubbleChart);

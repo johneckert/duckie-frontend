@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import BubbleChart from './BubbleChart';
 
 const KeywordArea = props => {
@@ -7,7 +8,7 @@ const KeywordArea = props => {
       {props.keywords.length > 0 ? (
         <div>
           <h2>Keywords</h2>
-          <BubbleChart keywords={props.keywords} />
+          <BubbleChart />
         </div>
       ) : (
         <div className="keyword-area" />
@@ -16,4 +17,10 @@ const KeywordArea = props => {
   );
 };
 
-export default KeywordArea;
+const mapStateToProps = state => {
+  return {
+    keywords: state.keywords
+  };
+};
+
+export default connect(mapStateToProps)(KeywordArea);
