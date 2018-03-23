@@ -31,7 +31,7 @@ const defaultState = {
     created_at: ''
   },
   listening: false,
-  loggedIn: false,
+  loggedIn: 'loading',
   user: emptyUser,
   // id: '3',
   // firstName: 'John',
@@ -97,15 +97,6 @@ const duckieReducer = (state = defaultState, action) => {
       return { ...state, loggedIn: false };
 
     case LOG_OUT:
-      console.log(
-        'log out',
-        'user',
-        state.user,
-        'logged',
-        state.loggedIn,
-        't:',
-        localStorage.token
-      );
       return { ...state, loggedIn: false, user: emptyUser };
 
     default:
