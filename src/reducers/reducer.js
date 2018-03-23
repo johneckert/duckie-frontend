@@ -6,24 +6,34 @@ import {
   CREATED_CONVERSATION,
   UPDATE_CONVERSATION,
   UPDATED_CONVERSATION,
-  LOGGED_IN,
-  CREATE_USER
+  LOGIN_SUCCEEDED,
+  LOGIN_FAILED,
+  CREATE_USER,
+  AUTHORIZE_USER,
+  AUTHORIZE_FAIL
 } from '../actions/actions';
 
 const defaultState = {
   conversation: {
     id: '',
     user_id: '',
-    transcript: '', // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.' //should be empty string when not testing
+    transcript: '',
+    // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.', //should be empty string when not testing
     created_at: ''
   },
   listening: false,
+  loggedIn: false,
   user: {
-    id: '3',
-    firstName: 'John',
-    lastName: 'Eckert',
-    email: 'johnteckert@gmail.com',
-    password: 'password'
+    id: null,
+    firstName: null,
+    lastName: null,
+    email: null,
+    password: null
+    // id: '3',
+    // firstName: 'John',
+    // lastName: 'Eckert',
+    // email: 'johnteckert@gmail.com',
+    // password: 'password'
   },
   keywords: [
     // { id: 1, word: 'javascript', relevance: 0.912565, color: 'royal' },
@@ -65,13 +75,23 @@ const duckieReducer = (state = defaultState, action) => {
       //add array of keywords to state
       return { ...state, keywords: updatekeywords };
 
-    case LOGGED_IN:
-      console.log('logIn', action.payload);
-      return { ...state, user: action.payload };
+    case LOGIN_SUCCEEDED:
+      return { ...state, loggedIn: true };
+
+    case LOGIN_FAILED:
+      return { ...state, loggedIn: false };
 
     case CREATE_USER:
       console.log(('create user:', action.payload));
       return { ...state, user: action.payload };
+
+    case AUTHORIZE_USER:
+      console.log('auth user: ', action.payload);
+      return { ...state, user: action.payload, loggedIn: true };
+
+    case AUTHORIZE_FAIL:
+      console.log('auth user: ', action.payload);
+      return { ...state, loggedIn: false };
 
     default:
       return state;

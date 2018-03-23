@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
-import ConversationContainer from './containers/ConversationContainer';
-import UserContainer from './containers/UserContainer';
+import AuthContainer from './containers/AuthContainer';
+// import ConversationContainer from './containers/ConversationContainer';
+// import UserContainer from './containers/UserContainer';
 import LoginContainer from './containers/LoginContainer';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
 
 class App extends Component {
@@ -12,14 +14,17 @@ class App extends Component {
       <div className="background">
         <Header />
         <Switch>
-          <Route path="/conversation" component={ConversationContainer} />
-          <Route path="/dashboard" component={UserContainer} />
+          <AuthContainer />
           <Route path="/login" component={LoginContainer} />
-          <Redirect from="/" to="/conversation" />
+          <Redirect from="/" to="/login" />
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { loggedIn: state.loggedIn };
+};
+
+export default connect(mapStateToProps)(App);

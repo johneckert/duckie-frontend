@@ -31,9 +31,14 @@ class SignInForm extends React.Component {
         <h2>Sign In</h2>
         <form>
           <label htmlFor="email">EMAIL</label>
-          <input type="text" id="email" onChange={this.handleEmailChange} />
+          <input type="text" id="email" onChange={this.handleEmailChange} autoComplete="email" />
           <label htmlFor="password">PASSWORD</label>
-          <input type="password" id="password" onChange={this.handlePasswordChange} />
+          <input
+            type="password"
+            id="password"
+            onChange={this.handlePasswordChange}
+            autoComplete="current-password"
+          />
           <button onClick={event => this.handleSignInClick(event)}>SIGN IN</button>
           <button onClick={event => this.handleToggleClick(event)}>CREATE ACCOUNT</button>
         </form>

@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import HeroDuck from '../components/HeroDuck';
 import TranscriptionContainer from './TranscriptionContainer';
 import KeywordArea from '../components/KeywordArea';

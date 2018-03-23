@@ -8,7 +8,10 @@ export const CREATING_CONVERSATION = 'CREATING_CONVERSATION';
 export const CREATED_CONVERSATION = 'CREATED_CONVERSATION';
 export const UPDATING_CONVERSATION = 'UPDATING_CONVERSATION';
 export const UPDATED_CONVERSATION = 'UPDATED_CONVERSATION';
-export const LOGGED_IN = 'LOGGED_IN';
+export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const AUTHORIZE_USER = 'AUTHORIZE_USER';
+export const AUTHORIZE_FAIL = 'AUTHORIZE_FAIL';
 export const CREATE_USER = 'CREATE_USER';
 
 export const toggleListening = () => {
@@ -25,8 +28,32 @@ export const updateTranscript = updatedTranscript => {
 
 export const logIn = (email, password) => {
   return function(dispatch) {
-    UserApi.login(email, password).then(user => {
-      dispatch({ type: LOGGED_IN, payload: user });
+    UserApi.login(email, password).then(j => {
+      if (j.error) {
+        dispatch({
+          type: LOGIN_FAILED,
+          payload: { loggedIn: false, token: false, error: j.error }
+        });
+      } else {
+        localStorage.setItem('token', j.token);
+        console.log('token: ', localStorage.token);
+        dispatch({
+          type: LOGIN_SUCCEEDED,
+          payload: { loggedIn: true, token: j.token, error: false }
+        });
+      }
+    });
+  };
+};
+
+export const authorizeUser = () => {
+  return function(dispatch) {
+    UserApi.authorize().then(user => {
+      if (user.error) {
+        dispatch({ type: AUTHORIZE_FAIL, payload: user });
+      } else {
+        dispatch({ type: AUTHORIZE_USER, payload: user });
+      }
     });
   };
 };

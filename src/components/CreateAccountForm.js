@@ -39,13 +39,28 @@ class CreateAccountForm extends React.Component {
         <h2>Create Account</h2>
         <form>
           <label htmlFor="firstName">FIRST NAME</label>
-          <input type="text" id="firstName" onChange={this.handleFirstChange} />
+          <input
+            type="text"
+            id="firstName"
+            onChange={this.handleFirstChange}
+            autoComplete="given-name"
+          />
           <label htmlFor="lastName">LAST NAME</label>
-          <input type="text" id="lastName" onChange={this.handleLastChange} />
+          <input
+            type="text"
+            id="lastName"
+            onChange={this.handleLastChange}
+            autoComplete="family-name"
+          />
           <label htmlFor="email">EMAIL</label>
-          <input type="text" id="email" onChange={this.handleEmailChange} />
+          <input type="text" id="email" onChange={this.handleEmailChange} autoComplete="email" />
           <label htmlFor="password">PASSWORD</label>
-          <input type="password" id="password" onChange={this.handlePasswordChange} />
+          <input
+            type="password"
+            id="password"
+            onChange={this.handlePasswordChange}
+            autoComplete="current-password"
+          />
           <button onClick={event => this.handleCreateClick(event)}>CONTINUE</button>
           <button onClick={event => this.handleCancelClick(event)}>CANCEL</button>
         </form>
