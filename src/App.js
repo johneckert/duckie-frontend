@@ -13,11 +13,7 @@ class App extends Component {
     return (
       <div className="background">
         <Header />
-        <Switch>
-          <AuthContainer />
-          <Route path="/login" component={LoginContainer} />
-          <Redirect from="/" to="/login" />
-        </Switch>
+        <AuthContainer />
       </div>
     );
   }

@@ -13,6 +13,7 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const AUTHORIZE_USER = 'AUTHORIZE_USER';
 export const AUTHORIZE_FAIL = 'AUTHORIZE_FAIL';
 export const CREATE_USER = 'CREATE_USER';
+export const LOG_OUT = 'LOG_OUT';
 
 export const toggleListening = () => {
   return { type: TOGGLE_LISTENING };
@@ -48,14 +49,27 @@ export const logIn = (email, password) => {
 
 export const authorizeUser = () => {
   return function(dispatch) {
-    UserApi.authorize().then(user => {
-      if (user.error) {
-        dispatch({ type: AUTHORIZE_FAIL, payload: user });
-      } else {
-        dispatch({ type: AUTHORIZE_USER, payload: user });
-      }
-    });
+    if (localStorage.token) {
+      UserApi.authorize().then(user => {
+        const currentUser = {
+          id: user.id,
+          firstName: user.first_name,
+          lastName: user.last_name,
+          password: user.password_digest
+        };
+        if (user.error) {
+          dispatch({ type: AUTHORIZE_FAIL, payload: user });
+        } else {
+          dispatch({ type: AUTHORIZE_USER, payload: currentUser });
+        }
+      });
+    }
   };
+};
+
+export const logOut = () => {
+  localStorage.removeItem('token');
+  return { type: LOG_OUT };
 };
 
 export const createUser = user => {

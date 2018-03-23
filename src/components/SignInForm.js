@@ -14,6 +14,7 @@ class SignInForm extends React.Component {
   };
 
   handleSignInClick = event => {
+    console.log('handleclick', this.state);
     event.preventDefault();
     this.props.dispatchLogIn(this.state);
   };

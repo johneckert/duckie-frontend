@@ -10,8 +10,17 @@ import {
   LOGIN_FAILED,
   CREATE_USER,
   AUTHORIZE_USER,
-  AUTHORIZE_FAIL
+  AUTHORIZE_FAIL,
+  LOG_OUT
 } from '../actions/actions';
+
+const emptyUser = {
+  id: null,
+  firstName: null,
+  lastName: null,
+  email: null,
+  password: null
+};
 
 const defaultState = {
   conversation: {
@@ -23,18 +32,12 @@ const defaultState = {
   },
   listening: false,
   loggedIn: false,
-  user: {
-    id: null,
-    firstName: null,
-    lastName: null,
-    email: null,
-    password: null
-    // id: '3',
-    // firstName: 'John',
-    // lastName: 'Eckert',
-    // email: 'johnteckert@gmail.com',
-    // password: 'password'
-  },
+  user: emptyUser,
+  // id: '3',
+  // firstName: 'John',
+  // lastName: 'Eckert',
+  // email: 'johnteckert@gmail.com',
+  // password: 'password'
   keywords: [
     // { id: 1, word: 'javascript', relevance: 0.912565, color: 'royal' },
     // { id: 2, word: 'ruby', relevance: 0.815, color: 'mellow-yellow' },
@@ -92,6 +95,18 @@ const duckieReducer = (state = defaultState, action) => {
     case AUTHORIZE_FAIL:
       console.log('auth user: ', action.payload);
       return { ...state, loggedIn: false };
+
+    case LOG_OUT:
+      console.log(
+        'log out',
+        'user',
+        state.user,
+        'logged',
+        state.loggedIn,
+        't:',
+        localStorage.token
+      );
+      return { ...state, loggedIn: true, user: emptyUser };
 
     default:
       return state;

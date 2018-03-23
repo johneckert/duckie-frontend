@@ -11,11 +11,10 @@ import thunk from 'redux-thunk';
 
 const store = createStore(
   duckieReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-console.log('store:', store);
-console.log('state:', store.getState());
 
 ReactDOM.render(
   <Provider store={store}>
