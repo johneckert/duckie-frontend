@@ -19,7 +19,7 @@ const defaultState = {
   },
   listening: false,
   user: {
-    id: '1',
+    id: '3',
     firstName: 'John',
     lastName: 'Eckert',
     email: 'johnteckert@gmail.com',
