@@ -47,6 +47,11 @@ export const logIn = (email, password) => {
   };
 };
 
+export const logOut = () => {
+  localStorage.removeItem('token');
+  return { type: LOG_OUT };
+};
+
 export const authorizeUser = () => {
   return function(dispatch) {
     if (localStorage.token) {
@@ -65,11 +70,6 @@ export const authorizeUser = () => {
       });
     }
   };
-};
-
-export const logOut = () => {
-  localStorage.removeItem('token');
-  return { type: LOG_OUT };
 };
 
 export const createUser = user => {

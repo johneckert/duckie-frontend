@@ -106,7 +106,7 @@ const duckieReducer = (state = defaultState, action) => {
         't:',
         localStorage.token
       );
-      return { ...state, loggedIn: true, user: emptyUser };
+      return { ...state, loggedIn: false, user: emptyUser };
 
     default:
       return state;

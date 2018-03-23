@@ -8,7 +8,6 @@ class LoginContainer extends React.Component {
   };
 
   toggleLogIn = () => {
-    console.log('clicked!');
     this.setState({ haveAccount: !this.state.haveAccount });
   };
 

@@ -33,6 +33,7 @@ class AuthContainer extends React.Component {
               return this.props.loggedIn ? <LoginContainer /> : <UserContainer />;
             }}
           />
+          <Redirect path="/" to={this.props.loggedIn ? '/dashboard' : '/login'} />
         </Switch>
       </div>
     );
