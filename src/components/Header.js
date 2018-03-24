@@ -14,9 +14,15 @@ const Header = props => {
           <a href="/dashboard">Dashboard</a>
         </li>
       </ul>
-      <button onClick={() => props.dispatchLogOut()}>LOG OUT </button>
+      {props.loggedIn ? <button onClick={() => props.dispatchLogOut()}>LOG OUT </button> : null}
     </div>
   );
+};
+
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.loggedIn
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -25,4 +31,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

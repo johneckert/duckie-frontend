@@ -31,7 +31,7 @@ const defaultState = {
     created_at: ''
   },
   listening: false,
-  loggedIn: 'loading',
+  loggedIn: false,
   user: emptyUser,
   // id: '3',
   // firstName: 'John',

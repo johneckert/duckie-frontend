@@ -22,9 +22,9 @@ class AuthContainer extends React.Component {
     return (
       <div className="conversation-container">
         <Switch>
-          <Route path="/conversation" render={() => <ConversationContainer />} />
-          <Route path="/dashboard" render={() => <UserContainer />} />
-          <Route path="*" to="/dashboard" />
+          <Route path="/conversation" component={ConversationContainer} />
+          <Route path="/dashboard" component={UserContainer} />
+          <Redirect path="*" to="/dashboard" />
         </Switch>
       </div>
     );

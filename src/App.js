@@ -14,7 +14,7 @@ class App extends Component {
       <div className="background">
         <Header />
         <Switch>
-          <Route exact path="/login" component={LoginContainer} />
+          <Route path="/login" component={LoginContainer} />
           <Route path="*" component={AuthContainer} />
         </Switch>
       </div>
