@@ -13,7 +13,7 @@ class ConversationApi {
   }
 
   static update(userId, conversation) {
-    if (conversation.transcript !== '') {
+    if (conversation.transcript && conversation.transcript !== '') {
       return fetch(BASE_URL + 'users/' + userId + '/conversations/' + conversation.id, {
         method: 'PATCH',
         headers: {
