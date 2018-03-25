@@ -88,6 +88,7 @@ body {
   border: solid 3px rgba(245, 245, 245, 0.5);
   height: 324px;
   padding: 30px;
+  overflow: auto;
 
   /* POSITIONING */
   align-self: stretch;

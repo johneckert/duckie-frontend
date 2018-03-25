@@ -119,7 +119,6 @@ class VoiceRecognition extends Component {
   }
 
   componentWillUnmount() {
-    //would making this stop mean hitting the button anytime is ok???????
     this.abort();
   }
 
