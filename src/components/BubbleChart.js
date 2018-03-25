@@ -21,7 +21,11 @@ class BubbleChart extends React.Component {
     //chart size
     const width = 1160;
     const height = 300;
-    const keywords = this.props.keywords;
+    const keywords = this.props.keywords.map((keyword, index) => {
+      keyword.color = this.props.colors[index % this.props.colors.length];
+      return keyword;
+    });
+
     //convert color name to hex
     const translateColor = name => {
       switch (name) {
@@ -168,7 +172,7 @@ class BubbleChart extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { keywords: state.keywords };
+  return { keywords: state.keywords, colors: state.colors };
 };
 
 export default connect(mapStateToProps)(BubbleChart);

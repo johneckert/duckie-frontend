@@ -58,13 +58,7 @@ const duckieReducer = (state = defaultState, action) => {
       return { ...state, listening: !state.listening };
 
     case GET_KEYWORDS:
-      //assign a color to each keyword
-      const keywords = action.payload.map((keyword, index) => {
-        keyword.color = state.colors[index % state.colors.length];
-        return keyword;
-      });
-      //add array of keywords to state
-      return { ...state, keywords: keywords };
+      return { ...state, keywords: action.payload };
 
     case CREATED_CONVERSATION:
       return { ...state, conversation: action.payload };
