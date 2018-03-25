@@ -9,7 +9,8 @@ import {
   FAILED_UPDATED_CONVERSATION,
   LOGIN_SUCCEEDED,
   LOGIN_FAILED,
-  CREATE_USER,
+  CREATE_USER_SUCCESS,
+  CREATE_USER_FAIL,
   AUTHORIZE_USER,
   AUTHORIZE_FAIL,
   LOG_OUT
@@ -67,12 +68,7 @@ const duckieReducer = (state = defaultState, action) => {
       return { ...state, conversation: { ...state.conversation, transcript: action.payload } };
 
     case UPDATED_CONVERSATION:
-      let updatekeywords = action.payload.map((keyword, index) => {
-        keyword.color = state.colors[index % state.colors.length];
-        return keyword;
-      });
-      console.log('updatedConversation', updatekeywords);
-      return { ...state, keywords: updatekeywords };
+      return { ...state, keywords: action.payload };
 
     case FAILED_UPDATED_CONVERSATION:
       return { ...state };
@@ -83,8 +79,11 @@ const duckieReducer = (state = defaultState, action) => {
     case LOGIN_FAILED:
       return { ...state, loggedIn: false };
 
-    case CREATE_USER:
-      return { ...state, user: action.payload };
+    case CREATE_USER_SUCCESS:
+      return { ...state, user: action.payload, loggedIn: true };
+
+    case CREATE_USER_FAIL:
+      return { ...state, loggedIn: false };
 
     case AUTHORIZE_USER:
       return { ...state, user: action.payload, loggedIn: true };

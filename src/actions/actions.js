@@ -13,7 +13,9 @@ export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const AUTHORIZE_USER = 'AUTHORIZE_USER';
 export const AUTHORIZE_FAIL = 'AUTHORIZE_FAIL';
-export const CREATE_USER = 'CREATE_USER';
+export const CREATING_USER = 'CREATING_USER';
+export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
+export const CREATE_USER_FAIL = 'CREATE_USER_FAIL';
 export const LOG_OUT = 'LOG_OUT';
 
 export const toggleListening = () => {
@@ -78,7 +80,23 @@ export const authorizeUser = () => {
 };
 
 export const createUser = user => {
-  return { type: CREATE_USER, payload: user };
+  return function(dispatch) {
+    const newUser = {
+      id: user.id,
+      email: user.email,
+      first_name: user.firstName,
+      last_name: user.lastName,
+      password: user.password
+    };
+    dispatch({ type: CREATING_USER });
+    UserApi.create(newUser).then(user => {
+      if (user.id) {
+        dispatch({ type: CREATE_USER_SUCCESS, payload: user });
+      } else {
+        dispatch({ type: CREATE_USER_FAIL });
+      }
+    });
+  };
 };
 
 export const createConversation = (userId, conversation) => {

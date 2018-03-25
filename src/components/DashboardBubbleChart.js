@@ -6,7 +6,9 @@ class BubbleChart extends React.Component {
   //certainly don't need all of these
   componentDidMount() {
     console.log('didmount');
-    this.generateBubbleChart();
+    if (this.props.keywords) {
+      this.generateBubbleChart();
+    }
   }
 
   componentDidUpdate() {

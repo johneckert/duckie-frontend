@@ -17,6 +17,7 @@ class CreateAccountForm extends React.Component {
 
   handleCreateClick = event => {
     event.preventDefault();
+    console.log('create form: ', this.state);
     this.props.dispatchCreateUser(this.state);
   };
 
