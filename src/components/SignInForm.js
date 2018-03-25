@@ -28,19 +28,34 @@ class SignInForm extends React.Component {
   render() {
     return (
       <div className="login-panel">
-        <h2>Sign In</h2>
+        <div className="login-title">Sign In</div>
         <form>
-          <label htmlFor="email">EMAIL</label>
-          <input type="text" id="email" onChange={this.handleEmailChange} autoComplete="email" />
-          <label htmlFor="password">PASSWORD</label>
+          <label className="login-label" htmlFor="email">
+            EMAIL
+          </label>
           <input
+            className="login-input"
+            type="text"
+            id="email"
+            onChange={this.handleEmailChange}
+            autoComplete="email"
+          />
+          <label className="login-label" htmlFor="password">
+            PASSWORD
+          </label>
+          <input
+            className="login-input"
             type="password"
             id="password"
             onChange={this.handlePasswordChange}
             autoComplete="current-password"
           />
-          <button onClick={event => this.handleSignInClick(event)}>SIGN IN</button>
-          <button onClick={event => this.handleToggleClick(event)}>CREATE ACCOUNT</button>
+          <button className="login-button" onClick={event => this.handleSignInClick(event)}>
+            SIGN IN
+          </button>
+          <button className="create-acnt-button" onClick={event => this.handleToggleClick(event)}>
+            CREATE ACCOUNT
+          </button>
         </form>
       </div>
     );
