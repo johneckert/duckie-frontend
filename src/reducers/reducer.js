@@ -20,7 +20,8 @@ const emptyUser = {
   firstName: null,
   lastName: null,
   email: null,
-  password: null
+  password: null,
+  numberOfConversations: null
 };
 
 const defaultState = {
