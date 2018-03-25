@@ -4,6 +4,7 @@ import Greeting from '../components/Greeting';
 import KeywordArea from '../components/KeywordArea';
 import ConversationButton from '../components/ConversationButton';
 import UserKeywordArea from '../components/UserKeywordArea';
+import ConversationCount from '../components/ConversationCount';
 
 class UserContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
@@ -17,6 +18,7 @@ class UserContainer extends React.Component {
       <div>
         <Greeting />
         <ConversationButton />
+        <ConversationCount />
         <UserKeywordArea />
       </div>
     );

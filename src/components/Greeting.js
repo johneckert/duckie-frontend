@@ -6,7 +6,7 @@ const Greeting = props => {
   if (!props.user.firstName) {
     return <div>Loading</div>;
   }
-  return <div className="transcript-header">Welcome, {props.user.firstName}!</div>;
+  return <div className="transcript-header">Welcome back, {props.user.firstName}!</div>;
 };
 
 const mapStateToProps = state => {

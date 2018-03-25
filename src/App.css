@@ -31,6 +31,22 @@ body {
   height: 100%;
 }
 
+/* Header */
+
+.logout-button {
+  align: right;
+  width: 112px;
+  height: 38px;
+  background-color: var(--gray);
+  border-bottom: solid 2px var(--aqua);
+  /* text */
+  font-family: Sarala;
+  /* font-size: 14px; */
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: var(--midnight);
+}
+
 .title {
   width: 27%;
   height: 36.5%;
@@ -158,6 +174,72 @@ body {
   grid-column-end: col-6;
   grid-row-start: row-f;
   grid-row-end: row-g;
+}
+
+/* Dashbaorad*/
+
+.count-style {
+  width: 183px;
+  height: 144px;
+  font-family: BioRhyme;
+  font-size: 144px;
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--royal);
+}
+
+.conversation-count-header {
+  width: 286px;
+  height: 112px;
+  font-family: BioRhyme;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--midnight);
+}
+
+.dashboard-duck {
+  width: 189.4px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.dashboard-keyword-header {
+  width: 622px;
+  height: 56px;
+  font-family: BioRhyme;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--midnight);
+}
+
+.dashboard-keyword-area {
+  width: 754px;
+  height: 586px;
+  background-color: var(--gray);
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+    0 16px 24px 2px rgba(0, 0, 0, 0.14);
+}
+
+.count-container {
+  width: 346px;
+  height: 516px;
+  background-color: var(--gray);
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+    0 16px 24px 2px rgba(0, 0, 0, 0.14);
 }
 
 /* Word Colors */

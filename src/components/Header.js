@@ -14,7 +14,11 @@ const Header = props => {
           <a href="/dashboard">Dashboard</a>
         </li>
       </ul>
-      {props.loggedIn ? <button onClick={() => props.dispatchLogOut()}>LOG OUT </button> : null}
+      {props.loggedIn ? (
+        <button className="logout-button" onClick={() => props.dispatchLogOut()}>
+          LOG OUT{' '}
+        </button>
+      ) : null}
     </div>
   );
 };

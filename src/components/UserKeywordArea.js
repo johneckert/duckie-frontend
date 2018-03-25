@@ -4,8 +4,8 @@ import BubbleChart from './BubbleChart';
 
 const KeywordArea = props => {
   return (
-    <div className="keyword-area">
-      <h2>Keywords</h2>
+    <div className="dashboard-keyword-area">
+      <div className="dashboard-keyword-header">Keywords</div>
       <BubbleChart />
     </div>
   );
