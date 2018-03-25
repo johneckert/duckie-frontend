@@ -16,7 +16,7 @@ class VoiceRecognition extends Component {
     if (SpeechRecognition != null) {
       this.recognition = this.createRecognition(SpeechRecognition);
     } else {
-      console.warn('The current browser does not support the SpeechRecognition API.');
+      console.warn('SpeechRecognition API not supported in this browser.');
     }
   }
   //name interval variable
@@ -119,6 +119,7 @@ class VoiceRecognition extends Component {
   }
 
   componentWillUnmount() {
+    //would making this stop mean hitting the button anytime is ok???????
     this.abort();
   }
 

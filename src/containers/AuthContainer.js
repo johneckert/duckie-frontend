@@ -16,18 +16,19 @@ class AuthContainer extends React.Component {
   }
 
   render() {
-    if (this.props.loggedIn === 'loading') {
+    if (!this.props.user.id) {
       return <div>Loading</div>;
+    } else {
+      return (
+        <div className="conversation-container">
+          <Switch>
+            <Route path="/conversation" component={ConversationContainer} />
+            <Route path="/dashboard" component={UserContainer} />
+            <Redirect path="*" to="/dashboard" />
+          </Switch>
+        </div>
+      );
     }
-    return (
-      <div className="conversation-container">
-        <Switch>
-          <Route path="/conversation" component={ConversationContainer} />
-          <Route path="/dashboard" component={UserContainer} />
-          <Redirect path="*" to="/dashboard" />
-        </Switch>
-      </div>
-    );
   }
 }
 
@@ -47,12 +48,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthContainer));
-
-{
-  /* <Redirect from="/login" to="/dashboard" />
-<Redirect from="/" to="/dashboard" />
-//
-<Redirect from="/conversation" to="/login" />
-<Redirect from="/dashboard" to="/login" />
-<Redirect from="/" to="/login" /> */
-}

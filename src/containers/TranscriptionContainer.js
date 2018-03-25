@@ -7,7 +7,7 @@ import ListenButton from '../components/ListenButton';
 import { getKeywords, createConversation, uodateConversation } from '../actions/actions';
 
 class TranscriptionContainer extends React.Component {
-  componentDidMount() {
+  componentDidMount(props) {
     this.props.dispatchCreateConversation(this.props.user.id, this.props.conversation);
   }
 

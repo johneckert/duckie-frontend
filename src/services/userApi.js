@@ -19,7 +19,6 @@ class UserApi {
   }
 
   static authorize() {
-    console.log(localStorage.getItem('token'));
     return fetch(BASE_URL + 'login', {
       method: 'GET',
       headers: {

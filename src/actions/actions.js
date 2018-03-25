@@ -8,6 +8,7 @@ export const CREATING_CONVERSATION = 'CREATING_CONVERSATION';
 export const CREATED_CONVERSATION = 'CREATED_CONVERSATION';
 export const UPDATING_CONVERSATION = 'UPDATING_CONVERSATION';
 export const UPDATED_CONVERSATION = 'UPDATED_CONVERSATION';
+export const FAILED_UPDATED_CONVERSATION = 'FAILED_UPDATED_CONVERSATION';
 export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const AUTHORIZE_USER = 'AUTHORIZE_USER';
@@ -90,7 +91,11 @@ export const updateConversation = (userId, conversation) => {
     dispatch({ type: UPDATING_CONVERSATION });
     ConversationApi.update(userId, conversation).then(keywordsJson => {
       //this is retunring keywords as json
-      dispatch({ type: UPDATED_CONVERSATION, payload: keywordsJson });
+      if (keywordsJson.error) {
+        dispatch({ type: FAILED_UPDATED_CONVERSATION });
+      } else {
+        dispatch({ type: UPDATED_CONVERSATION, payload: keywordsJson });
+      }
     });
   };
 };
