@@ -21,7 +21,8 @@ const emptyUser = {
   lastName: null,
   email: null,
   password: null,
-  numberOfConversations: null
+  numberOfConversations: null,
+  userKeywords: null
 };
 
 const defaultState = {

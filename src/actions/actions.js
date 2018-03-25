@@ -63,8 +63,10 @@ export const authorizeUser = () => {
           firstName: user.first_name,
           lastName: user.last_name,
           password: user.password_digest,
-          numberOfConversations: user.number_of_conversations
+          numberOfConversations: user.number_of_conversations,
+          userKeywords: user.user_keywords
         };
+        console.log('authaction', currentUser);
         if (user.error) {
           dispatch({ type: AUTHORIZE_FAIL, payload: user });
         } else {
