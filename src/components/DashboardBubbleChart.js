@@ -52,12 +52,10 @@ class BubbleChart extends React.Component {
       const r = (k.relevance * 1000) % 800;
       const color = translateColor(k.color);
       const word = k.word;
-      console.log('keyword: ', k.word, 'rel: ', k.relevance); //log keywords for testing
       return { cx: cx, cy: cy, r: r, color: color, word: word };
     });
 
     nodeList.map((k, i) => {
-      console.log('r: ', k.r, 'x: ', k.cx, 'y: ', k.cy);
       if (i % 4 === 0) {
         k.cx = 10 + k.r;
         k.cy = k.cy + k.r / 2;

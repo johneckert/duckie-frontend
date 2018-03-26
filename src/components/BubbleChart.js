@@ -15,6 +15,12 @@ class BubbleChart extends React.Component {
   //   this.generateBubbleChart();
   // }
 
+  removeDuplicates = (array, prop) => {
+    return array.filter((obj, pos, arr) => {
+      return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+  };
+
   getRandomPosition = (max, min) => Math.random() * (max - min) + min;
 
   generateBubbleChart = () => {
@@ -47,15 +53,12 @@ class BubbleChart extends React.Component {
       const cx = this.getRandomPosition(1160 - k.relevance * 100, k.relevance * 100); //READO THIS LINE WHHEN FORCE WORKS - FOR NOW ITS FAKED
       const cy = this.getRandomPosition(300 - k.relevance * 100, k.relevance * 100);
       const r = k.relevance * 200 + 80;
-      console.log(k.word, ': ', r);
       const color = translateColor(k.color);
       const word = k.word;
-      console.log('keyword: ', k.word, 'rel: ', k.relevance); //log keywords for testing
       return { cx: cx, cy: cy, r: r, color: color, word: word };
     });
 
     nodeList.map((k, i) => {
-      console.log(k, 'r: ', k.r, 'x: ', k.cx, 'y: ', k.cy);
       if (i % 4 === 0) {
         k.cx = 10 + k.r;
         k.cy = k.cy + k.r / 2;
@@ -201,7 +204,8 @@ class BubbleChart extends React.Component {
   // };
 
   render() {
-    return this.props.keywords ? (
+    const uniqKeywords = this.removeDuplicates(this.props.keywords, 'word');
+    return uniqKeywords ? (
       <div className="convo-bubble-container" ref="chartContainer">
         {this.generateBubbleChart()}
       </div>
