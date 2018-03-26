@@ -358,12 +358,37 @@ body {
 
 /* Bubbles */
 
-.bubble {
+/* .bubble {
   font-family: Sarala;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   text-align: center;
   color: var(--midnight);
+} */
+/* CSS Bubbles*/
+.bubble-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Sarala;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--midnight);
+}
+
+.bubble-div > p {
+}
+
+.chartContainer {
+  width: 754px;
+  height: 650px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
 }
 
 /* Conversation Layout */
@@ -411,6 +436,28 @@ body {
   grid-column-end: col-6;
   grid-row-start: row-f;
   grid-row-end: row-g;
+}
+
+.convo-bubble-container {
+  width: 1160px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.convo-bubbles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Sarala;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--midnight);
 }
 
 /* LOGIN AREA */

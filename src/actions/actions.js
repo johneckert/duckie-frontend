@@ -111,13 +111,18 @@ export const createConversation = (userId, conversation) => {
 export const updateConversation = (userId, conversation) => {
   return function(dispatch) {
     dispatch({ type: UPDATING_CONVERSATION });
-    ConversationApi.update(userId, conversation).then(keywordsJson => {
-      //this is retunring keywords as json
-      if (keywordsJson.error) {
-        dispatch({ type: FAILED_UPDATED_CONVERSATION });
-      } else {
-        dispatch({ type: UPDATED_CONVERSATION, payload: keywordsJson });
-      }
-    });
+    console.log(conversation);
+    if (conversation.transcript.length > 0) {
+      ConversationApi.update(userId, conversation).then(keywordsJson => {
+        //this is retunring keywords as json
+        if (keywordsJson.error) {
+          dispatch({ type: FAILED_UPDATED_CONVERSATION });
+        } else {
+          dispatch({ type: UPDATED_CONVERSATION, payload: keywordsJson });
+        }
+      });
+    } else {
+      dispatch({ type: FAILED_UPDATED_CONVERSATION });
+    }
   };
 };
