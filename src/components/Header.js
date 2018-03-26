@@ -6,19 +6,29 @@ const Header = props => {
   return (
     <div className="header">
       <h1 className="title">{'</Duckie>'}</h1>
-      <ul>
-        <li>
-          <a href="/conversation">Conversation</a>
+      <ul className="nav-list">
+        <li className="nav-li">
+          <a href="/conversation" className="nav-link">
+            Conversation
+          </a>
         </li>
-        <li>
-          <a href="/dashboard">Dashboard</a>
+        <li className="nav-li">
+          <a href="/dashboard" className="nav-link">
+            Dashboard
+          </a>
+        </li>
+        <li className="nav-li">
+          {props.loggedIn ? (
+            <a href="/login" className="nav-link" onClick={() => props.dispatchLogOut()}>
+              Log Out
+            </a>
+          ) : (
+            <a href="/login" className="nav-link" onClick={() => props.dispatchLogOut()}>
+              Log In
+            </a>
+          )}
         </li>
       </ul>
-      {props.loggedIn ? (
-        <button className="logout-button" onClick={() => props.dispatchLogOut()}>
-          LOG OUT{' '}
-        </button>
-      ) : null}
     </div>
   );
 };

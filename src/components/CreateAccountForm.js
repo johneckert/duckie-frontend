@@ -37,33 +37,54 @@ class CreateAccountForm extends React.Component {
   render() {
     return (
       <div className="login-panel">
-        <h2>Create Account</h2>
+        <div className="login-title">Create Account</div>
         <form>
-          <label htmlFor="firstName">FIRST NAME</label>
+          <label className="login-label" htmlFor="firstName">
+            FIRST NAME
+          </label>
           <input
+            className="login-input"
             type="text"
             id="firstName"
             onChange={this.handleFirstChange}
             autoComplete="given-name"
           />
-          <label htmlFor="lastName">LAST NAME</label>
+          <label className="login-label" htmlFor="lastName">
+            LAST NAME
+          </label>
           <input
+            className="login-input"
             type="text"
             id="lastName"
             onChange={this.handleLastChange}
             autoComplete="family-name"
           />
-          <label htmlFor="email">EMAIL</label>
-          <input type="text" id="email" onChange={this.handleEmailChange} autoComplete="email" />
-          <label htmlFor="password">PASSWORD</label>
+          <label className="login-label" htmlFor="email">
+            EMAIL
+          </label>
           <input
+            className="login-input"
+            type="text"
+            id="email"
+            onChange={this.handleEmailChange}
+            autoComplete="email"
+          />
+          <label className="login-label" htmlFor="password">
+            PASSWORD
+          </label>
+          <input
+            className="login-input"
             type="password"
             id="password"
             onChange={this.handlePasswordChange}
             autoComplete="current-password"
           />
-          <button onClick={event => this.handleCreateClick(event)}>CONTINUE</button>
-          <button onClick={event => this.handleCancelClick(event)}>CANCEL</button>
+          <button className="login-button" onClick={event => this.handleCreateClick(event)}>
+            CONTINUE
+          </button>
+          <button className="create-acnt-button" onClick={event => this.handleCancelClick(event)}>
+            CANCEL
+          </button>
         </form>
       </div>
     );

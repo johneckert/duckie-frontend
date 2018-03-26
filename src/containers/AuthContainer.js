@@ -20,7 +20,7 @@ class AuthContainer extends React.Component {
       return <div>Loading</div>;
     } else {
       return (
-        <div className="conversation-container">
+        <div>
           <Switch>
             <Route path="/conversation" component={ConversationContainer} />
             <Route path="/dashboard" component={UserContainer} />

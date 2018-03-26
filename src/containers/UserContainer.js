@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Greeting from '../components/Greeting';
+import TinyDuck from '../components/TinyDuck';
 import KeywordArea from '../components/KeywordArea';
 import ConversationButton from '../components/ConversationButton';
 import UserKeywordArea from '../components/UserKeywordArea';
@@ -15,7 +16,8 @@ class UserContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="conversation-container">
+        <TinyDuck />
         <Greeting />
         <ConversationButton />
         <ConversationCount />

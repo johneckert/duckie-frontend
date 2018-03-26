@@ -33,22 +33,52 @@ body {
 
 /* Header */
 
-.logout-button {
+.nav-li {
+  display: inline;
+}
+
+.nav-link {
+  padding: 0;
+  margin: 0 20px 0 20px;
   align: right;
-  width: 112px;
+  /* width: 112px; */
   height: 38px;
   background-color: var(--gray);
-  border-bottom: solid 2px var(--aqua);
   /* text */
   font-family: Sarala;
-  /* font-size: 14px; */
+  font-size: 14px;
   letter-spacing: 1.5px;
   text-align: center;
   color: var(--midnight);
 }
 
+.nav-link:link {
+  text-decoration: none;
+}
+.nav-link:visited {
+  text-decoration: none;
+}
+.nav-link:hover {
+  text-decoration: none;
+  color: var(--aqua);
+  /* make current page have border bottom if time */
+  border-bottom: solid 2px var(--aqua);
+}
+.nav-link:active {
+  text-decoration: none;
+}
+
+.current {
+  border-bottom: solid 2px var(--aqua);
+}
+
+.nav-list {
+  list-style-type: none;
+}
+
 .title {
   width: 27%;
+  padding: 0 0 0 40px;
   height: 36.5%;
   font-family: BioRhyme;
   font-size: 24px;
@@ -57,13 +87,14 @@ body {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: 6px;
-  text-align: center;
+  text-align: left;
   color: var(--midnight);
 }
 
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 8%;
   background-color: var(--gray);
@@ -178,9 +209,53 @@ body {
 
 /* Dashbaorad*/
 
+.dash {
+  align-self: stretch;
+  grid-column-start: col-1;
+  grid-column-end: col-2;
+  grid-row-start: row-d;
+  grid-row-end: row-e;
+}
+
+.dash-button {
+  width: 346px;
+  height: 42px;
+  font-family: Sarala;
+  font-size: 14px;
+  /* font-weight: bold; */
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--red-orange);
+  border-radius: 2%;
+  border: none;
+}
+
+.dashboard-header {
+  font-family: BioRhyme;
+  width: 406px;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--aqua);
+
+  grid-column-start: col-1;
+  grid-column-end: col-3;
+  grid-row-start: row-b;
+  grid-row-end: row-c;
+}
+
 .count-style {
   width: 183px;
   height: 144px;
+  padding: 20px;
   font-family: BioRhyme;
   font-size: 144px;
   font-weight: 800;
@@ -195,6 +270,7 @@ body {
 .conversation-count-header {
   width: 286px;
   height: 112px;
+  padding: 20px 0 10px 35px;
   font-family: BioRhyme;
   font-size: 36px;
   font-weight: bold;
@@ -210,9 +286,11 @@ body {
   width: 189.4px;
   height: 200px;
   object-fit: contain;
+  align-self: center;
 }
 
 .dashboard-keyword-header {
+  padding: 20px 0px 0px 40px;
   width: 622px;
   height: 56px;
   font-family: BioRhyme;
@@ -228,18 +306,32 @@ body {
 
 .dashboard-keyword-area {
   width: 754px;
-  height: 586px;
   background-color: var(--gray);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
     0 16px 24px 2px rgba(0, 0, 0, 0.14);
+
+  grid-column-start: col-3;
+  grid-column-end: col-6;
+  grid-row-start: row-d;
+  grid-row-end: row-g;
 }
 
 .count-container {
+  display: flex;
+  flex-direction: column;
+  align: center;
+  justify-content: space-around;
   width: 346px;
-  height: 516px;
+  height: 656px;
   background-color: var(--gray);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
     0 16px 24px 2px rgba(0, 0, 0, 0.14);
+
+  grid-column-start: col-1;
+  grid-column-end: col-2;
+  grid-row-start: row-d;
+  grid-row-end: row-g;
+  align-self: end;
 }
 
 /* Word Colors */
@@ -323,8 +415,17 @@ body {
 
 /* LOGIN AREA */
 
+.tiny-duck {
+  position: fixed;
+  left: 620px;
+  top: 20px;
+  width: 94.5px;
+  height: 99px;
+  object-fit: contain;
+}
+
 .login-title {
-  width: 139px;
+  width: 400px;
   height: 56px;
   margin-bottom: 17px;
   font-family: BioRhyme;
@@ -337,7 +438,7 @@ body {
 .login-label {
   display: block;
   padding-bottom: 8px;
-  width: 33px;
+  width: 100px;
   height: 18px;
   font-family: Sarala;
   font-size: 11px;
@@ -372,9 +473,9 @@ body {
 }
 
 .login-panel {
-  width: 50%;
+  width: 600px;
   height: 528px;
-  margin: 100px 25% 0px 25%;
+  margin: 100px 340px 0px 340px;
   padding: 60px;
   background-color: var(--white);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
