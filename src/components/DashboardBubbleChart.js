@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import * as d3 from 'd3';
 
 class BubbleChart extends React.Component {
-  //certainly don't need all of these
   // componentDidMount() {
   //   console.log('didmount');
   //   if (this.props.keywords) {
@@ -49,7 +48,7 @@ class BubbleChart extends React.Component {
     const nodeList = this.props.keywords.map(k => {
       const cx = this.getRandomPosition(500 - k.relevance * 100, k.relevance * 100); //READO THIS LINE WHEN FORCE WORKS - FOR NOW ITS FAKED
       const cy = this.getRandomPosition(200 - k.relevance * 100, k.relevance * 100);
-      const r = ((k.relevance * 1000) % 900) * 2;
+      const r = ((k.relevance - 1 * 1000) % 900) * 2;
       const color = translateColor(k.color);
       const word = k.word;
       return { cx: cx, cy: cy, r: r, color: color, word: word };
@@ -75,11 +74,7 @@ class BubbleChart extends React.Component {
       const divStyle = {
         background: k.color,
         height: k.r,
-        width: k.r,
-        marginTop: this.getRandomPosition(30, 5),
-        marginBottom: this.getRandomPosition(30, 5),
-        marginLeft: this.getRandomPosition(30, 5),
-        marginRight: this.getRandomPosition(30, 5)
+        width: k.r
         // left: k.cx,
         // top: k.cy
       };
