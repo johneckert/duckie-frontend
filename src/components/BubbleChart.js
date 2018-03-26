@@ -52,7 +52,7 @@ class BubbleChart extends React.Component {
     const nodeList = this.props.keywords.map(k => {
       const cx = this.getRandomPosition(1160 - k.relevance * 100, k.relevance * 100); //READO THIS LINE WHHEN FORCE WORKS - FOR NOW ITS FAKED
       const cy = this.getRandomPosition(300 - k.relevance * 100, k.relevance * 100);
-      const r = k.relevance * 200 + 80;
+      const r = (k.relevance - 1) * 200 + 80;
       const color = translateColor(k.color);
       const word = k.word;
       return { cx: cx, cy: cy, r: r, color: color, word: word };
@@ -204,6 +204,7 @@ class BubbleChart extends React.Component {
   // };
 
   render() {
+    console.log(this.props.keywords);
     const uniqKeywords = this.removeDuplicates(this.props.keywords, 'word');
     return uniqKeywords ? (
       <div className="convo-bubble-container" ref="chartContainer">

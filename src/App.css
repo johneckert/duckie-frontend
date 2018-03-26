@@ -255,7 +255,6 @@ body {
 .count-style {
   width: 183px;
   height: 144px;
-  padding: 20px;
   font-family: BioRhyme;
   font-size: 144px;
   font-weight: 800;
@@ -319,7 +318,7 @@ body {
 .count-container {
   display: flex;
   flex-direction: column;
-  align: center;
+  align-items: center;
   justify-content: space-around;
   width: 346px;
   height: 656px;
@@ -463,9 +462,9 @@ body {
 /* LOGIN AREA */
 
 .tiny-duck {
-  position: fixed;
+  position: relative;
   left: 620px;
-  top: 20px;
+  top: -50px;
   width: 94.5px;
   height: 99px;
   object-fit: contain;

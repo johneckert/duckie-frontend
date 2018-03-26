@@ -49,35 +49,39 @@ class BubbleChart extends React.Component {
     const nodeList = this.props.keywords.map(k => {
       const cx = this.getRandomPosition(500 - k.relevance * 100, k.relevance * 100); //READO THIS LINE WHEN FORCE WORKS - FOR NOW ITS FAKED
       const cy = this.getRandomPosition(200 - k.relevance * 100, k.relevance * 100);
-      const r = (k.relevance * 1000) % 800;
+      const r = ((k.relevance * 1000) % 900) * 2;
       const color = translateColor(k.color);
       const word = k.word;
       return { cx: cx, cy: cy, r: r, color: color, word: word };
     });
 
-    nodeList.map((k, i) => {
-      if (i % 4 === 0) {
-        k.cx = 10 + k.r;
-        k.cy = k.cy + k.r / 2;
-      } else {
-        k.cx = nodeList[i - 1].cx + nodeList[i - 1].r + k.r + 5;
-        k.cy = k.cy + k.r / 2;
-      }
-
-      if (i >= 4 && i <= 7) {
-        k.cy = k.cy + 190;
-      } else if (i >= 8) {
-        k.cy = k.cy + 380;
-      }
-    });
+    // nodeList.map((k, i) => {
+    //   if (i % 4 === 0) {
+    //     k.cx = 10 + k.r;
+    //     k.cy = k.cy + k.r / 2;
+    //   } else {
+    //     k.cx = nodeList[i - 1].cx + nodeList[i - 1].r + k.r + 5;
+    //     k.cy = k.cy + k.r / 2;
+    //   }
+    //
+    //   if (i >= 4 && i <= 7) {
+    //     k.cy = k.cy + 190;
+    //   } else if (i >= 8) {
+    //     k.cy = k.cy + 380;
+    //   }
+    // });
 
     return nodeList.map((k, i) => {
       const divStyle = {
         background: k.color,
         height: k.r,
         width: k.r,
-        left: k.cx,
-        top: k.cy
+        marginTop: this.getRandomPosition(30, 5),
+        marginBottom: this.getRandomPosition(30, 5),
+        marginLeft: this.getRandomPosition(30, 5),
+        marginRight: this.getRandomPosition(30, 5)
+        // left: k.cx,
+        // top: k.cy
       };
       return (
         <div className="bubble-div" key={i} style={divStyle}>
