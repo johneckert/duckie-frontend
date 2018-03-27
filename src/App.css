@@ -245,7 +245,7 @@ body {
 
 .dashboard-header {
   font-family: BioRhyme;
-  width: 406px;
+  /* width: 406px; */
   font-size: 36px;
   font-weight: bold;
   font-style: normal;
@@ -256,7 +256,7 @@ body {
   color: var(--aqua);
 
   grid-column-start: col-1;
-  grid-column-end: col-3;
+  grid-column-end: col-5;
   grid-row-start: row-b;
   grid-row-end: row-c;
 }
