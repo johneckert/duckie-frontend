@@ -130,6 +130,7 @@ body {
 }
 
 .transcript-box {
+  margin-top: 30px;
   border-radius: 5px;
   background-color: var(--midnight);
   border: solid 3px rgba(245, 245, 245, 0.5);
@@ -336,23 +337,27 @@ body {
 /* Word Colors */
 
 .royal {
-  color: var(--royal);
+  color: var(--royal) !important;
 }
 
 .gold {
-  color: var(--gold);
+  color: var(--gold) !important;
 }
 
 .red-orange {
-  color: var(--red-orange);
+  color: var(--red-orange) !important;
 }
 
 .aqua {
-  color: var(--aqua);
+  color: var(--aqua) !important;
 }
 
 .mellow-yellow {
-  color: var(--mellow-yellow);
+  color: var(--mellow-yellow) !important;
+}
+
+.white {
+  color: var(--white);
 }
 
 /* Bubbles */

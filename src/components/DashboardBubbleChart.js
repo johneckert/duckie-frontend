@@ -3,19 +3,6 @@ import { connect } from 'react-redux';
 import * as d3 from 'd3';
 
 class BubbleChart extends React.Component {
-  // componentDidMount() {
-  //   console.log('didmount');
-  //   if (this.props.keywords) {
-  //     this.generateBubbleChart();
-  //   }
-  // }
-  //
-  // componentDidUpdate() {
-  //   console.log('did udate');
-  //   this.clearBubbleChart();
-  //   this.generateBubbleChart();
-  // }
-
   getRandomPosition = (max, min) => Math.random() * (max - min) + min;
 
   generateBubbleChart = () => {
@@ -54,22 +41,6 @@ class BubbleChart extends React.Component {
       return { cx: cx, cy: cy, r: r, color: color, word: word };
     });
 
-    // nodeList.map((k, i) => {
-    //   if (i % 4 === 0) {
-    //     k.cx = 10 + k.r;
-    //     k.cy = k.cy + k.r / 2;
-    //   } else {
-    //     k.cx = nodeList[i - 1].cx + nodeList[i - 1].r + k.r + 5;
-    //     k.cy = k.cy + k.r / 2;
-    //   }
-    //
-    //   if (i >= 4 && i <= 7) {
-    //     k.cy = k.cy + 190;
-    //   } else if (i >= 8) {
-    //     k.cy = k.cy + 380;
-    //   }
-    // });
-
     return nodeList.map((k, i) => {
       const divStyle = {
         background: k.color,
@@ -84,107 +55,6 @@ class BubbleChart extends React.Component {
         </div>
       );
     });
-    //   //create svg canvas
-    //   const svg = d3
-    //     .select(this.refs.chartContainer)
-    //     .append('svg')
-    //     .attr('ref', 'canvas')
-    //     .attr('height', height)
-    //     .attr('width', width)
-    //     .attr('id', 'chartContainer');
-    //
-    //   //create svg group
-    //   const circleGroup = d3
-    //     .select('#chartContainer')
-    //     .selectAll(this.refs.keyword)
-    //     .data(nodeList)
-    //     .enter()
-    //     .append('g');
-    //   //add circle to group
-    //   circleGroup
-    //     .append('circle')
-    //     .attr('ref', 'keyword')
-    //     .attr('r', (d, i) => d.r)
-    //     .style('fill', (d, i) => d.color)
-    //     .attr('cx', (d, i) => d.cx)
-    //     .attr('cy', (d, i) => d.cy);
-    //
-    //   //add text to group
-    //   circleGroup
-    //     .append('text')
-    //     .attr('ref', 'keyword')
-    //     .attr('class', 'bubble')
-    //     .attr('x', (d, i) => d.cx)
-    //     .attr('y', (d, i) => d.cy)
-    //     .attr('text-anchor', 'middle')
-    //     .text((d, i) => d.word);
-    //
-    //   // force.on('end', () => {
-    //   //   //when force calculation ends do this:
-    //   //   circleGroup.attr('cx', d => d.x).attr('cy', d => d.y);
-    //   // });
-    //   //
-    //   // force.start;
-    //
-    //   // //force?  <--- HOW THE FUCK DO I DO THIS
-    //   // const ticked = () => {
-    //   //   //grab circles
-    //   //   const updateCircle = d3
-    //   //     .select('svg')
-    //   //     .selectAll('circle')
-    //   //     .data(nodeList);
-    //   //   //update position
-    //   //   updateCircle
-    //   //     .enter()
-    //   //     .append('circle')
-    //   //     .attr('r', d => d.r)
-    //   //     .merge(updateCircle)
-    //   //     .attr('cx', d => d.cx)
-    //   //     .attr('cy', d => d.cy);
-    //   //   updateCircle.exit().remove();
-    //   //   //grab text
-    //   //   const updateText = d3
-    //   //     .select('svg')
-    //   //     .selectAll('text')
-    //   //     .data(nodeList);
-    //   //   //update position
-    //   //   updateText
-    //   //     .enter()
-    //   //     .append('text')
-    //   //     .attr('r', d => d.r)
-    //   //     .merge(updateText)
-    //   //     .attr('cx', d => d.cx)
-    //   //     .attr('cy', d => d.cy);
-    //   //   updateText.exit().remove();
-    //   // };
-    //   //
-    //   // //FIGURE OUT FORCE
-    //   // var simulation = d3
-    //   //   .forceSimulation()
-    //   //   .velocityDecay(0.2)
-    //   //   .force(
-    //   //     'x',
-    //   //     d3
-    //   //       .forceX()
-    //   //       .strength(forceStrength)
-    //   //       .x(center.x)
-    //   //   )
-    //   //   .force(
-    //   //     'y',
-    //   //     d3
-    //   //       .forceY()
-    //   //       .strength(forceStrength)
-    //   //       .y(center.y)
-    //   //   )
-    //   //   .force('charge', d3.forceManyBody().strength(charge))
-    //   //   .on('tick', ticked);
-    //   // // debugger;
-    //
-    //   console.log(circleGroup);
-    // };
-    //
-    // clearBubbleChart = () => {
-    //   d3.selectAll('g > *').remove();
   };
 
   render() {
