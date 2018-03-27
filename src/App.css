@@ -397,10 +397,11 @@ body {
 .chartContainer {
   width: 754px;
   height: 650px;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: baseline;
+  /* justify-content: center;
+  align-items: baseline; */
 }
 
 /* Conversation Layout */
@@ -470,6 +471,90 @@ body {
   text-align: center;
   vertical-align: middle;
   color: var(--midnight);
+}
+
+.b-0 {
+  position: absolute;
+  left: 30px;
+  top: 116px;
+  background: var(--royal);
+}
+
+.b-1 {
+  position: absolute;
+  left: 467px;
+  top: 520px;
+  background: var(--mellow-yellow);
+}
+
+.b-2 {
+  position: absolute;
+  left: 580px;
+  top: 66px;
+  background: var(--gold);
+}
+
+.b-3 {
+  position: absolute;
+  left: 233px;
+  top: 34px;
+  background: var(--red-orange);
+}
+
+.b-4 {
+  position: absolute;
+  left: 394px;
+  top: 129px;
+  background: var(--aqua);
+}
+
+.b-5 {
+  position: absolute;
+  left: 43px;
+  top: 488px;
+  background: var(--aqua);
+}
+
+.b-6 {
+  position: absolute;
+  left: 490px;
+  top: 236px;
+  background: var(--red-orange);
+}
+
+.b-7 {
+  position: absolute;
+  left: 330px;
+  top: 319px;
+  background: var(--gold);
+}
+
+.b-8 {
+  position: absolute;
+  left: 192px;
+  top: 265px;
+  background: var(--royal);
+}
+
+.b-9 {
+  position: absolute;
+  left: 580px;
+  top: 380px;
+  background: var(--royal);
+}
+
+.b-10 {
+  position: absolute;
+  left: 43px;
+  top: 279px;
+  background: var(--mellow-yellow);
+}
+
+.b-11 {
+  position: absolute;
+  left: 256px;
+  top: 486px;
+  background: var(--red-orange);
 }
 
 /* LOGIN AREA */

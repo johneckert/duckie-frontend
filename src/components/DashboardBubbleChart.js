@@ -5,9 +5,6 @@ class BubbleChart extends React.Component {
   getRandomPosition = (max, min) => Math.random() * (max - min) + min;
 
   generateBubbleChart = () => {
-    //chart size
-    const width = 754;
-    const height = 650;
     //assign colors to userKeywords because they are different then convo keywords.
     const keywords = this.props.keywords.map((keyword, index) => {
       keyword.color = this.props.colors[index % this.props.colors.length];
@@ -32,24 +29,24 @@ class BubbleChart extends React.Component {
 
     //generate node list
     const nodeList = this.props.keywords.map(k => {
-      const cx = this.getRandomPosition(500 - k.relevance * 100, k.relevance * 100); //READO THIS LINE WHEN FORCE WORKS - FOR NOW ITS FAKED
-      const cy = this.getRandomPosition(200 - k.relevance * 100, k.relevance * 100);
-      const r = ((k.relevance - 1 * 1000) % 900) * 2;
+      const r = (k.relevance - 1) * 150;
       const color = translateColor(k.color);
       const word = k.word;
-      return { cx: cx, cy: cy, r: r, color: color, word: word };
+      return { r: r, color: color, word: word };
     });
 
     return nodeList.map((k, i) => {
+      //create style object
       const divStyle = {
-        background: k.color,
+        // background: k.color,
         height: k.r,
         width: k.r
-        // left: k.cx,
-        // top: k.cy
+        // ,
+        // marginTop: `${this.getRandomPosition(40, 10)}px`,
+        // marginLeft: `${this.getRandomPosition(100, 10)}px`
       };
       return (
-        <div className="bubble-div" key={i} style={divStyle}>
+        <div className={`convo-bubbles b-${i}`} key={i} style={divStyle}>
           <p>{k.word}</p>
         </div>
       );
