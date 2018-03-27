@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as d3 from 'd3';
 
 class BubbleChart extends React.Component {
   removeDuplicates = (array, prop) => {
@@ -15,10 +14,6 @@ class BubbleChart extends React.Component {
     //chart size
     const width = 1160;
     const height = 300;
-    const keywords = this.props.keywords.map((keyword, index) => {
-      keyword.color = this.props.colors[index % this.props.colors.length];
-      return keyword;
-    });
 
     //convert color name to hex
     const translateColor = name => {
@@ -46,22 +41,6 @@ class BubbleChart extends React.Component {
       return { cx: cx, cy: cy, r: r, color: color, word: word };
     });
 
-    nodeList.map((k, i) => {
-      if (i % 4 === 0) {
-        k.cx = 10 + k.r;
-        k.cy = k.cy + k.r / 2;
-      } else {
-        k.cx = nodeList[i - 1].cx + nodeList[i - 1].r + k.r + 5;
-        k.cy = k.cy + k.r / 2;
-      }
-
-      if (i >= 4 && i <= 7) {
-        k.cy = k.cy + 190;
-      } else if (i >= 8) {
-        k.cy = k.cy + 380;
-      }
-    });
-
     return nodeList.map((k, i) => {
       const divStyle = {
         background: k.color,
@@ -79,7 +58,6 @@ class BubbleChart extends React.Component {
   };
 
   render() {
-    console.log(this.props.keywords);
     const uniqKeywords = this.removeDuplicates(this.props.keywords, 'word');
     return uniqKeywords ? (
       <div className="convo-bubble-container" ref="chartContainer">

@@ -9,7 +9,7 @@ class BubbleChart extends React.Component {
     //chart size
     const width = 754;
     const height = 650;
-
+    //assign colors to userKeywords because they are different then convo keywords.
     const keywords = this.props.keywords.map((keyword, index) => {
       keyword.color = this.props.colors[index % this.props.colors.length];
       return keyword;

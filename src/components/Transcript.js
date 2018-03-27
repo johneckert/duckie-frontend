@@ -1,31 +1,53 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Transcript = props => {
-  let tSpans = props.transcript.split(' ').map((tWord, i) => {
-    let relevantKeyword = props.keywords.filter(kw => {
-      console.log('k', kw.word.toLowerCase(), 't', tWord.toLowerCase());
-      return kw.word.toLowerCase() === tWord.toLowerCase();
+class Transcript extends React.Component {
+  tSpans = () => {
+    //split transcript into spans before rendering
+    return this.props.transcript.split(' ').map((tWord, i) => {
+      console.log('findCOlor', tWord);
+      return (
+        <span key={i} id={tWord} className={this.findColor(tWord)}>
+          {`${tWord} `}
+        </span>
+      );
     });
-    console.log('keyword', relevantKeyword);
-    return (
-      <span
-        key={i}
-        className={relevantKeyword[0] ? `${relevantKeyword[0].color}` : `white`}
-      >{`${tWord} `}</span>
-    );
-  });
+  };
 
-  return (
-    <div className="transcript-box">
-      {props.transcript === '' ? (
-        <div className="instruction-text">Press Start Listening to Begin</div>
-      ) : (
-        <div className="transcript-text">{tSpans}</div>
-      )}
-    </div>
-  );
-};
+  findColor = tWord => {
+    //strip period off of transcript word for comparison
+    let cleanTWord;
+    if (tWord[tWord.length - 1] === '.') {
+      cleanTWord = tWord.slice(0, -1);
+    } else {
+      cleanTWord = tWord;
+    }
+    //find if word is a keyword, if its return color for className of span
+    if (this.props.keywords.length > 0) {
+      let relevantKeyword = this.props.keywords.find(kw => {
+        return kw.word.toLowerCase() === cleanTWord.toLowerCase();
+      });
+      if (relevantKeyword) {
+        return relevantKeyword.color;
+      } else {
+        return 'white';
+      }
+    }
+  };
+
+  render() {
+    console.log('rendering');
+    return (
+      <div className="transcript-box">
+        {this.props.transcript === '' ? (
+          <div className="instruction-text">Press Start Listening to Begin</div>
+        ) : (
+          <div className="transcript-text">{this.tSpans()}</div>
+        )}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {

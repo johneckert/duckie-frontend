@@ -111,14 +111,19 @@ export const createConversation = (userId, conversation) => {
 export const updateConversation = (userId, conversation) => {
   return function(dispatch) {
     dispatch({ type: UPDATING_CONVERSATION });
-    console.log(conversation);
     if (conversation.transcript.length > 0) {
       ConversationApi.update(userId, conversation).then(keywordsJson => {
-        //this is retunring keywords as json
+        //this is returning keywords as json
         if (keywordsJson.error) {
           dispatch({ type: FAILED_UPDATED_CONVERSATION });
         } else {
-          dispatch({ type: UPDATED_CONVERSATION, payload: keywordsJson });
+          //add color to keywords
+          const colors = ['royal', 'gold', 'red-orange', 'aqua', 'mellow-yellow'];
+          const kwsWithColor = keywordsJson.map((kw, index) => {
+            kw.color = colors[index % colors.length];
+            return kw;
+          });
+          dispatch({ type: UPDATED_CONVERSATION, payload: kwsWithColor });
         }
       });
     } else {
