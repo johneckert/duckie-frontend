@@ -5,7 +5,6 @@ class Transcript extends React.Component {
   tSpans = () => {
     //split transcript into spans before rendering
     return this.props.transcript.split(' ').map((tWord, i) => {
-      console.log('findCOlor', tWord);
       return (
         <span key={i} id={tWord} className={this.findColor(tWord)}>
           {`${tWord} `}
@@ -36,7 +35,6 @@ class Transcript extends React.Component {
   };
 
   render() {
-    console.log('rendering');
     return (
       <div className="transcript-box">
         {this.props.transcript === '' ? (

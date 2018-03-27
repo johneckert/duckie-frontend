@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as d3 from 'd3';
 
 class BubbleChart extends React.Component {
   getRandomPosition = (max, min) => Math.random() * (max - min) + min;

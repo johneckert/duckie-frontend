@@ -59,7 +59,6 @@ export const authorizeUser = () => {
   return function(dispatch) {
     if (localStorage.token) {
       UserApi.authorize().then(user => {
-        console.log(user);
         const currentUser = {
           id: user.id,
           firstName: user.first_name,
@@ -68,7 +67,6 @@ export const authorizeUser = () => {
           numberOfConversations: user.number_of_conversations,
           userKeywords: user.user_keywords
         };
-        console.log('authaction', currentUser);
         if (user.error) {
           dispatch({ type: AUTHORIZE_FAIL, payload: user });
         } else {

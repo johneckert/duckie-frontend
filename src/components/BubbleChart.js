@@ -12,8 +12,8 @@ class BubbleChart extends React.Component {
 
   generateBubbleChart = () => {
     //chart size
-    const width = 1160;
-    const height = 300;
+    // const width = 1160;
+    // const height = 300;
 
     //convert color name to hex
     const translateColor = name => {
@@ -28,6 +28,8 @@ class BubbleChart extends React.Component {
           return '#4484ce';
         case 'mellow-yellow':
           return '#fedc3d';
+        default:
+          return '#ffffff';
       }
     };
 
