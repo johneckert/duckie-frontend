@@ -15,8 +15,11 @@ class LoginContainer extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
+    console.log('willrecieve', nextProps.loggedIn);
     if (nextProps.loggedIn) {
+      console.log('in the if');
       this.props.history.push('/dashboard');
+      console.log('after push');
     }
   }
 

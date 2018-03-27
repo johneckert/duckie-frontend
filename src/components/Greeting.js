@@ -10,7 +10,6 @@ const Greeting = props => {
 };
 
 const mapStateToProps = state => {
-  console.log('greeting state: ', state);
   return { user: state.user };
 };
 

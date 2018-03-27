@@ -41,9 +41,6 @@ class BubbleChart extends React.Component {
         // background: k.color,
         height: k.r,
         width: k.r
-        // ,
-        // marginTop: `${this.getRandomPosition(40, 10)}px`,
-        // marginLeft: `${this.getRandomPosition(100, 10)}px`
       };
       return (
         <div className={`convo-bubbles b-${i}`} key={i} style={divStyle}>

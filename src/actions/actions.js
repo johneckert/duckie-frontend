@@ -87,9 +87,27 @@ export const createUser = user => {
       password: user.password
     };
     dispatch({ type: CREATING_USER });
+    //create user in database
     UserApi.create(newUser).then(user => {
       if (user.id) {
+        //if creation suceesful log user in
         dispatch({ type: CREATE_USER_SUCCESS, payload: user });
+        console.log('user: ', user);
+        UserApi.login(user.email, newUser.password).then(j => {
+          if (j.error) {
+            dispatch({
+              type: LOGIN_FAILED,
+              payload: { loggedIn: false, token: false, error: j.error }
+            });
+          } else {
+            localStorage.setItem('token', j.token);
+            console.log('token: ', localStorage.token);
+            dispatch({
+              type: LOGIN_SUCCEEDED,
+              payload: { loggedIn: true, token: j.token, error: false }
+            });
+          }
+        });
       } else {
         dispatch({ type: CREATE_USER_FAIL });
       }

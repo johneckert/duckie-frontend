@@ -17,7 +17,6 @@ class CreateAccountForm extends React.Component {
 
   handleCreateClick = event => {
     event.preventDefault();
-    console.log('create form: ', this.state);
     this.props.dispatchCreateUser(this.state);
   };
 
@@ -93,7 +92,8 @@ class CreateAccountForm extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchCreateUser: user => dispatch(createUser(user))
+    dispatchCreateUser: user => dispatch(createUser(user)),
+    dispatchLogIn: ({ email, password }) => dispatch(logIn(email, password))
   };
 };
 
