@@ -7,7 +7,7 @@ const KeywordArea = props => {
     <div className="keyword-area">
       {props.keywords.length > 0 ? (
         <div>
-          <h2>Keywords</h2>
+          <div className="keyword-title">Keywords</div>
           <BubbleChart />
         </div>
       ) : (

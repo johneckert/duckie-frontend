@@ -188,6 +188,14 @@ body {
 
 /* Keyword Area */
 
+.keyword-title {
+  font-family: BioRhyme;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: left;
+  color: var(--aqua);
+}
+
 .keyword-area {
   /* width: 192px;
   height: 56px; */
@@ -404,7 +412,7 @@ body {
   /* grid-template-columns: [col-0] 4% [col-1] 27% [col-2] 4% [col-3] 33% [col-4] 15% [col-5] 13% [col-6] 4% [end];
   grid-template-rows: [row-a] 90px [row-b] 5% [row-c] 3% [row-d] 32% [row-e] 6% [row-f] 35% [row-g] 100px [end]; */
   grid-template-columns: [col-0] 60px [col-1] 346px [col-2] 60px [col-3] 416px [col-4] 176px [col-5] 162px [col-6] 60px [end];
-  grid-template-rows: [row-a] 90px [row-b] 56px [row-c] 30px [row-d] 324px [row-e] 60px [row-f] 363px [row-g] 100px [end];
+  grid-template-rows: [row-a] 45px [row-b] 56px [row-c] 30px [row-d] 324px [row-e] 60px [row-f] 363px [row-g] 45px [end];
 }
 
 .duck-item {
@@ -448,7 +456,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: baseline;
+  /* align-items: baseline; */
 }
 
 .convo-bubbles {
