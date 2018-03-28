@@ -669,6 +669,13 @@ body {
   font-size: 20px;
 }
 
+.browser-warning {
+  padding-top: 40px;
+  color: var(--red-orange);
+  font-family: BioRhyme;
+  font-size: 40px;
+}
+
 .login-label {
   display: block;
   padding-bottom: 8px;

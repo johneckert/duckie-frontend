@@ -36,6 +36,7 @@ class VoiceRecognition extends Component {
     return recognition;
   };
 
+  //generate full transcript
   bindResult = event => {
     let interimTranscript = '';
     let finalTranscript = '';
