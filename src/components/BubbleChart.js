@@ -42,7 +42,7 @@ class BubbleChart extends React.Component {
         width: kw.radius,
         marginTop: `${this.getRandomValue(100, 0)}px`
       };
-      if (i < 6) {
+      if (i < 5) {
         return (
           <div className="convo-bubbles" key={i} style={divStyle}>
             <p>{kw.word}</p>
