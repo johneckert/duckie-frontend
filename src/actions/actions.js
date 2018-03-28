@@ -36,7 +36,7 @@ export const logIn = (email, password) => {
       if (j.error) {
         dispatch({
           type: LOGIN_FAILED,
-          payload: { loggedIn: false, token: false, error: j.error }
+          payload: { loggedIn: false, token: false, error: 'attempt unsuccessful' }
         });
       } else {
         localStorage.setItem('token', j.token);
@@ -97,7 +97,7 @@ export const createUser = user => {
           if (j.error) {
             dispatch({
               type: LOGIN_FAILED,
-              payload: { loggedIn: false, token: false, error: j.error }
+              payload: { loggedIn: false, token: false, error: 'attempt unsuccessful' }
             });
           } else {
             localStorage.setItem('token', j.token);

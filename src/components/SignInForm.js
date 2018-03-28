@@ -57,10 +57,15 @@ class SignInForm extends React.Component {
             CREATE ACCOUNT
           </button>
         </form>
+        {this.props.error ? <p className="error-message">{this.props.error}</p> : null}
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { error: state.error };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -68,4 +73,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SignInForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);

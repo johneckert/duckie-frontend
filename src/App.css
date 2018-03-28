@@ -370,13 +370,6 @@ body {
 
 /* Bubbles */
 
-/* .bubble {
-  font-family: Sarala;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  color: var(--midnight);
-} */
 /* CSS Bubbles*/
 .bubble-div {
   display: flex;
@@ -400,8 +393,6 @@ body {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center;
-  align-items: baseline; */
 }
 
 /* Conversation Layout */
@@ -561,7 +552,7 @@ body {
 
 .tiny-duck {
   position: relative;
-  left: 620px;
+  left: 710px;
   top: -50px;
   width: 94.5px;
   height: 99px;
@@ -577,6 +568,13 @@ body {
   font-weight: bold;
   text-align: left;
   color: var(--midnight);
+}
+
+.error-message {
+  padding-top: 40px;
+  color: var(--red-orange);
+  font-family: BioRhyme;
+  font-size: 20px;
 }
 
 .login-label {

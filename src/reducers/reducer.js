@@ -31,17 +31,12 @@ const defaultState = {
     id: '',
     user_id: '',
     transcript: '',
-    // 'I like to eat cheese while learning javascript and Ruby.  It helps me understand conditionals and functions.', //should be empty string when not testing
     created_at: ''
   },
   listening: false,
   loggedIn: false,
+  error: false,
   user: emptyUser,
-  // id: '3',
-  // firstName: 'John',
-  // lastName: 'Eckert',
-  // email: 'johnteckert@gmail.com',
-  // password: 'password'
   keywords: [
     // { id: 1, word: 'javascript', relevance: 1.912565, color: 'royal' },
     // { id: 2, word: 'ruby', relevance: 1.815, color: 'mellow-yellow' },
@@ -80,10 +75,10 @@ const duckieReducer = (state = defaultState, action) => {
       return { ...state };
 
     case LOGIN_SUCCEEDED:
-      return { ...state, loggedIn: true };
+      return { ...state, loggedIn: true, error: action.payload.error };
 
     case LOGIN_FAILED:
-      return { ...state, loggedIn: false };
+      return { ...state, loggedIn: false, error: action.payload.error };
 
     case CREATE_USER_SUCCESS:
       return { ...state, user: action.payload, loggedIn: true };
