@@ -712,7 +712,7 @@ body {
 }
 
 .create-acnt-button {
-  border-radius: 2px;
+  border-style: none;
   font-family: Sarala;
   font-size: 14px;
   font-weight: bold;
