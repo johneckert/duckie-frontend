@@ -108,7 +108,6 @@ export const createUser = user => {
           }
         });
       } else {
-        console.log(user);
         dispatch({ type: CREATE_USER_FAIL, payload: { error: 'User already exists' } });
       }
     });
