@@ -2,9 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Greeting = props => {
-  console.log('greeting props', props);
   if (!props.user.firstName) {
-    return <div>Loading</div>;
+    return (
+      <span className="dashboard-loader">
+        <div className="loading-dot one" />
+        <div className="loading-dot two" />
+        <div className="loading-dot three" />
+      </span>
+    );
   }
   return <div className="dashboard-header">Welcome back, {props.user.firstName}!</div>;
 };

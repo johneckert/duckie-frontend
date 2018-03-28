@@ -2,16 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 class BubbleChart extends React.Component {
-  getRandomPosition = (max, min) => Math.random() * (max - min) + min;
-
   generateBubbleChart = () => {
-    //assign colors to userKeywords because they are different then convo keywords.
-    const keywords = this.props.keywords.map((keyword, index) => {
-      keyword.color = this.props.colors[index % this.props.colors.length];
-      return keyword;
-    });
-
-    //convert color name to hex
     const translateColor = name => {
       switch (name) {
         case 'aqua':
@@ -27,24 +18,21 @@ class BubbleChart extends React.Component {
       }
     };
 
-    //generate node list
-    const nodeList = this.props.keywords.map(k => {
-      const r = (k.relevance - 1) * 150;
-      const color = translateColor(k.color);
-      const word = k.word;
-      return { r: r, color: color, word: word };
+    const nodeList = this.props.keywords.map(kw => {
+      const radius = (kw.relevance - 1) * 150;
+      const color = translateColor(kw.color);
+      const word = kw.word;
+      return { radius: radius, color: color, word: word };
     });
 
-    return nodeList.map((k, i) => {
-      //create style object
+    return nodeList.map((kw, i) => {
       const divStyle = {
-        // background: k.color,
-        height: k.r,
-        width: k.r
+        height: kw.radius,
+        width: kw.radius
       };
       return (
         <div className={`convo-bubbles b-${i}`} key={i} style={divStyle}>
-          <p>{k.word}</p>
+          <p>{kw.word}</p>
         </div>
       );
     });

@@ -8,10 +8,9 @@ class BubbleChart extends React.Component {
     });
   };
 
-  getRandomPosition = (max, min) => Math.random() * (max - min) + min;
+  getRandomValue = (max, min) => Math.random() * (max - min) + min;
 
   generateBubbleChart = () => {
-    //convert color name to hex
     const translateColor = name => {
       switch (name) {
         case 'aqua':
@@ -29,27 +28,24 @@ class BubbleChart extends React.Component {
       }
     };
 
-    //generate node list
-    const nodeList = this.props.keywords.map(k => {
-      const r = (k.relevance - 1) * 150 + 80;
-      const color = translateColor(k.color);
-      const word = k.word;
-      return { r: r, color: color, word: word };
+    const nodeList = this.props.keywords.map(kw => {
+      const radius = (kw.relevance - 1) * 150 + 80;
+      const color = translateColor(kw.color);
+      const word = kw.word;
+      return { radius: radius, color: color, word: word };
     });
 
-    return nodeList.map((k, i) => {
-      //create style object
+    return nodeList.map((kw, i) => {
       const divStyle = {
-        background: k.color,
-        height: k.r,
-        width: k.r,
-        marginTop: `${this.getRandomPosition(100, 0)}px`
+        background: kw.color,
+        height: kw.radius,
+        width: kw.radius,
+        marginTop: `${this.getRandomValue(100, 0)}px`
       };
-      //return first 5 bubbles
       if (i < 6) {
         return (
           <div className="convo-bubbles" key={i} style={divStyle}>
-            <p>{k.word}</p>
+            <p>{kw.word}</p>
           </div>
         );
       }

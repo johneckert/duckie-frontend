@@ -34,10 +34,23 @@ body {
 /* LOADING DOTS */
 
 .loader {
-  padding: 100px 295px;
+  align-self: flex-start;
   width: 100px;
   display: flex;
   justify-content: space-between;
+}
+
+.dashboard-loader {
+  align-self: center;
+  padding: 120px;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+
+  grid-column-start: col-1;
+  grid-column-end: col-2;
+  grid-row-start: row-b;
+  grid-row-end: row-c;
 }
 
 .loading-dot {
