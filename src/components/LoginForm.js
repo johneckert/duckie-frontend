@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logIn } from '../actions/actions';
+import { logIn, resetError } from '../actions/actions';
 
 class LoginForm extends React.Component {
   state = {
@@ -11,6 +11,7 @@ class LoginForm extends React.Component {
   handleToggleClick = event => {
     event.preventDefault();
     this.props.toggleLogIn();
+    this.props.dispatchResetError();
   };
 
   handleSignInClick = event => {
@@ -68,7 +69,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatchLogIn: ({ email, password }) => dispatch(logIn(email, password))
+    dispatchLogIn: ({ email, password }) => dispatch(logIn(email, password)),
+    dispatchResetError: () => dispatch(resetError())
   };
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logIn, createUser } from '../actions/actions';
+import { logIn, createUser, resetError } from '../actions/actions';
 
 class CreateAccountForm extends React.Component {
   state = {
@@ -13,6 +13,7 @@ class CreateAccountForm extends React.Component {
   handleCancelClick = event => {
     event.preventDefault();
     this.props.toggleLogIn();
+    this.props.dispatchResetError();
   };
 
   handleCreateClick = event => {
@@ -80,16 +81,22 @@ class CreateAccountForm extends React.Component {
             CANCEL
           </button>
         </form>
+        {this.props.error ? <p className="error-message">{this.props.error}</p> : null}
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return { error: state.error };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     dispatchCreateUser: user => dispatch(createUser(user)),
-    dispatchLogIn: ({ email, password }) => dispatch(logIn(email, password))
+    dispatchLogIn: ({ email, password }) => dispatch(logIn(email, password)),
+    dispatchResetError: () => dispatch(resetError())
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateAccountForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountForm);

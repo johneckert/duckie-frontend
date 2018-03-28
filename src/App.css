@@ -718,6 +718,7 @@ body {
 
 .login-button {
   font-family: Sarala;
+  margin: 0px 5px;
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.5px;

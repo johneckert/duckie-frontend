@@ -1,12 +1,6 @@
 import BASE_URL from '../urls.js';
 
 class UserApi {
-  static index() {
-    return fetch(BASE_URL + 'users')
-      .then(response => response.json)
-      .then(json => console.log(json));
-  }
-
   static login(email, password) {
     return fetch(BASE_URL + 'login', {
       method: 'POST',

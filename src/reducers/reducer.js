@@ -11,7 +11,8 @@ import {
   CREATE_USER_FAIL,
   AUTHORIZE_USER,
   AUTHORIZE_FAIL,
-  LOG_OUT
+  LOG_OUT,
+  RESET_ERROR
 } from '../actions/actions';
 
 const emptyUser = {
@@ -69,7 +70,7 @@ const duckieReducer = (state = defaultState, action) => {
       return { ...state, user: action.payload, loggedIn: true };
 
     case CREATE_USER_FAIL:
-      return { ...state, loggedIn: false };
+      return { ...state, loggedIn: false, error: action.payload.error };
 
     case AUTHORIZE_USER:
       return { ...state, user: action.payload, loggedIn: true };
@@ -79,6 +80,9 @@ const duckieReducer = (state = defaultState, action) => {
 
     case LOG_OUT:
       return { ...state, loggedIn: false, user: emptyUser };
+
+    case RESET_ERROR:
+      return { ...state, error: false };
 
     default:
       return state;

@@ -17,6 +17,7 @@ export const CREATING_USER = 'CREATING_USER';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
 export const CREATE_USER_FAIL = 'CREATE_USER_FAIL';
 export const LOG_OUT = 'LOG_OUT';
+export const RESET_ERROR = 'RESET_ERROR';
 
 export const toggleListening = () => {
   return { type: TOGGLE_LISTENING };
@@ -95,7 +96,7 @@ export const createUser = user => {
           if (j.error) {
             dispatch({
               type: LOGIN_FAILED,
-              payload: { loggedIn: false, token: false, error: 'attempt unsuccessful' }
+              payload: { loggedIn: false, token: false, error: 'Attempt unsuccessful' }
             });
           } else {
             localStorage.setItem('token', j.token);
@@ -107,7 +108,8 @@ export const createUser = user => {
           }
         });
       } else {
-        dispatch({ type: CREATE_USER_FAIL });
+        console.log(user);
+        dispatch({ type: CREATE_USER_FAIL, payload: { error: 'User already exists' } });
       }
     });
   };
@@ -144,4 +146,8 @@ export const updateConversation = (userId, conversation) => {
       dispatch({ type: FAILED_UPDATED_CONVERSATION });
     }
   };
+};
+
+export const resetError = () => {
+  return { type: RESET_ERROR };
 };
