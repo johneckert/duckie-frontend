@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logIn } from '../actions/actions';
 
-class SignInForm extends React.Component {
+class LoginForm extends React.Component {
   state = {
     email: '',
     password: ''
@@ -18,11 +18,8 @@ class SignInForm extends React.Component {
     this.props.dispatchLogIn(this.state);
   };
 
-  handleEmailChange = event => {
-    this.setState({ ...this.state, email: event.target.value });
-  };
-  handlePasswordChange = event => {
-    this.setState({ ...this.state, password: event.target.value });
+  handleChange = event => {
+    this.setState({ ...this.state, [event.target.name]: event.target.value });
   };
 
   render() {
@@ -35,9 +32,10 @@ class SignInForm extends React.Component {
           </label>
           <input
             className="login-input"
+            name="email"
             type="text"
             id="email"
-            onChange={this.handleEmailChange}
+            onChange={this.handleChange}
             autoComplete="email"
           />
           <label className="login-label" htmlFor="password">
@@ -45,9 +43,10 @@ class SignInForm extends React.Component {
           </label>
           <input
             className="login-input"
+            name="password"
             type="password"
             id="password"
-            onChange={this.handlePasswordChange}
+            onChange={this.handleChange}
             autoComplete="current-password"
           />
           <button className="login-button" onClick={event => this.handleSignInClick(event)}>
@@ -73,4 +72,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

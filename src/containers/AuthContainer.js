@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import UserContainer from './UserContainer';
+import DashboardContainer from './DashboardContainer';
 import LoginContainer from './LoginContainer';
 import ConversationContainer from './ConversationContainer';
 import { authorizeUser } from '../actions/actions';
@@ -9,7 +9,6 @@ import { authorizeUser } from '../actions/actions';
 class AuthContainer extends React.Component {
   componentDidMount() {
     if (localStorage.length === 0) {
-      console.log('com did mount auth');
       this.props.history.push('/login');
     } else {
       this.props.dispatchAuthorizeUser();
@@ -24,7 +23,7 @@ class AuthContainer extends React.Component {
         <div>
           <Switch>
             <Route path="/conversation" component={ConversationContainer} />
-            <Route path="/dashboard" component={UserContainer} />
+            <Route path="/dashboard" component={DashboardContainer} />
             <Redirect path="*" to="/dashboard" />
           </Switch>
         </div>

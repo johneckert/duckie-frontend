@@ -8,7 +8,6 @@ import './App.css';
 
 class App extends Component {
   render() {
-    console.log('history', this.props.history.location.pathname);
     return (
       <div className="background">
         <Header />

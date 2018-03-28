@@ -44,8 +44,10 @@ class Transcript extends React.Component {
 
   transcriptContent = () => {
     if (this.props.transcript === '' && !this.props.listening) {
+      //on load
       return <div className="instruction-text">Press Start Listening to Begin</div>;
     } else if (this.props.transcript === '' && this.props.listening) {
+      //listening and waiting for response
       return (
         <span className="loader">
           <div className="loading-dot one" />
@@ -54,6 +56,7 @@ class Transcript extends React.Component {
         </span>
       );
     } else {
+      //have response
       return <div className="transcript-text">{this.tSpans()}</div>;
     }
   };

@@ -7,7 +7,7 @@ import ConversationButton from '../components/ConversationButton';
 import UserKeywordArea from '../components/UserKeywordArea';
 import ConversationCount from '../components/ConversationCount';
 
-class UserContainer extends React.Component {
+class DashboardContainer extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (!nextProps.loggedIn) {
       this.props.history.push('/login');
@@ -31,4 +31,4 @@ const mapStateToProps = state => {
   return { loggedIn: state.loggedIn };
 };
 
-export default connect(mapStateToProps)(UserContainer);
+export default connect(mapStateToProps)(DashboardContainer);

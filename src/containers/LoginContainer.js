@@ -1,6 +1,6 @@
 import React from 'react';
 import CreateAccountForm from '../components/CreateAccountForm';
-import SignInForm from '../components/SignInForm';
+import LoginForm from '../components/LoginForm';
 import TinyDuck from '../components/TinyDuck';
 import { connect } from 'react-redux';
 
@@ -30,7 +30,7 @@ class LoginContainer extends React.Component {
       <div className="conversation-container">
         <TinyDuck />
         {this.state.haveAccount ? (
-          <SignInForm toggleLogIn={this.toggleLogIn} />
+          <LoginForm toggleLogIn={this.toggleLogIn} />
         ) : (
           <CreateAccountForm toggleLogIn={this.toggleLogIn} />
         )}
