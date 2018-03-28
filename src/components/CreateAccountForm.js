@@ -20,6 +20,10 @@ class CreateAccountForm extends React.Component {
     this.props.dispatchCreateUser(this.state);
   };
 
+  // handleChange = event => {
+  //   this.setState({ ...this.state, [event.target.name]: event.target.value });
+  // };
+
   handleFirstChange = event => {
     this.setState({ ...this.state, firstName: event.target.value });
   };
@@ -43,6 +47,7 @@ class CreateAccountForm extends React.Component {
           </label>
           <input
             className="login-input"
+            name="firstName"
             type="text"
             id="firstName"
             onChange={this.handleFirstChange}

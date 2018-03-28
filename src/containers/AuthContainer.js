@@ -9,6 +9,7 @@ import { authorizeUser } from '../actions/actions';
 class AuthContainer extends React.Component {
   componentDidMount() {
     if (localStorage.length === 0) {
+      console.log('com did mount auth');
       this.props.history.push('/login');
     } else {
       this.props.dispatchAuthorizeUser();

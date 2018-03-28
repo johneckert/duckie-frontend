@@ -34,23 +34,32 @@ class Transcript extends React.Component {
     }
   };
 
+  transcriptContent = () => {
+    if (this.props.transcript === '' && !this.props.listening) {
+      return <div className="instruction-text">Press Start Listening to Begin</div>;
+    } else if (this.props.transcript === '' && this.props.listening) {
+      return (
+        <span className="loader">
+          <div className="loading-dot one" />
+          <div className="loading-dot two" />
+          <div className="loading-dot three" />
+        </span>
+      );
+    } else {
+      return <div className="transcript-text">{this.tSpans()}</div>;
+    }
+  };
+
   render() {
-    return (
-      <div className="transcript-box">
-        {this.props.transcript === '' ? (
-          <div className="instruction-text">Press Start Listening to Begin</div>
-        ) : (
-          <div className="transcript-text">{this.tSpans()}</div>
-        )}
-      </div>
-    );
+    return <div className="transcript-box">{this.transcriptContent()}</div>;
   }
 }
 
 const mapStateToProps = state => {
   return {
     transcript: state.conversation.transcript,
-    keywords: state.keywords
+    keywords: state.keywords,
+    listening: state.listening
   };
 };
 

@@ -31,6 +31,56 @@ body {
   height: 100%;
 }
 
+/* LOADING DOTS */
+
+.loader {
+  padding: 100px 295px;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.loading-dot {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: var(--gray);
+}
+
+.one {
+  animation-duration: 0.5;
+  animation-name: loading;
+  animation-iteration-count: infinite;
+}
+
+.two {
+  animation-duration: 0.5;
+  animation-delay: 0.5;
+  animation-name: loading;
+  animation-iteration-count: infinite;
+}
+
+.three {
+  animation-duration: 0.5;
+  animation-delay: 0.1;
+  animation-name: loading;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
 /* Header */
 
 .nav-li {

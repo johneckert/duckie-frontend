@@ -90,9 +90,7 @@ export const createUser = user => {
     //create user in database
     UserApi.create(newUser).then(user => {
       if (user.id) {
-        //if creation suceesful log user in
-        dispatch({ type: CREATE_USER_SUCCESS, payload: user });
-        console.log('user: ', user);
+        //log-in new user
         UserApi.login(user.email, newUser.password).then(j => {
           if (j.error) {
             dispatch({
