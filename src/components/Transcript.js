@@ -13,19 +13,27 @@ class Transcript extends React.Component {
     });
   };
 
-  findColor = tWord => {
-    //strip period off of transcript word for comparison
+  stripPeriod = tWord => {
     let cleanTWord;
     if (tWord[tWord.length - 1] === '.') {
       cleanTWord = tWord.slice(0, -1);
     } else {
       cleanTWord = tWord;
     }
-    //find if word is a keyword, if its return color for className of span
+    return cleanTWord;
+  };
+
+  findRelevantKeyword = word => {
+    let relevantKeyword = this.props.keywords.find(keyword => {
+      return keyword.word.toLowerCase() === word.toLowerCase();
+    });
+    return relevantKeyword;
+  };
+
+  findColor = tWord => {
+    const cleanTWord = this.stripPeriod(tWord);
     if (this.props.keywords.length > 0) {
-      let relevantKeyword = this.props.keywords.find(kw => {
-        return kw.word.toLowerCase() === cleanTWord.toLowerCase();
-      });
+      const relevantKeyword = this.findRelevantKeyword(cleanTWord);
       if (relevantKeyword) {
         return relevantKeyword.color;
       } else {

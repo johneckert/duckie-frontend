@@ -20,21 +20,8 @@ class CreateAccountForm extends React.Component {
     this.props.dispatchCreateUser(this.state);
   };
 
-  // handleChange = event => {
-  //   this.setState({ ...this.state, [event.target.name]: event.target.value });
-  // };
-
-  handleFirstChange = event => {
-    this.setState({ ...this.state, firstName: event.target.value });
-  };
-  handleLastChange = event => {
-    this.setState({ ...this.state, lastName: event.target.value });
-  };
-  handleEmailChange = event => {
-    this.setState({ ...this.state, email: event.target.value });
-  };
-  handlePasswordChange = event => {
-    this.setState({ ...this.state, password: event.target.value });
+  handleChange = event => {
+    this.setState({ ...this.state, [event.target.name]: event.target.value });
   };
 
   render() {
@@ -58,6 +45,7 @@ class CreateAccountForm extends React.Component {
           </label>
           <input
             className="login-input"
+            name="lastName"
             type="text"
             id="lastName"
             onChange={this.handleLastChange}
@@ -68,6 +56,7 @@ class CreateAccountForm extends React.Component {
           </label>
           <input
             className="login-input"
+            name="email"
             type="text"
             id="email"
             onChange={this.handleEmailChange}
@@ -78,6 +67,7 @@ class CreateAccountForm extends React.Component {
           </label>
           <input
             className="login-input"
+            name="password"
             type="password"
             id="password"
             onChange={this.handlePasswordChange}
