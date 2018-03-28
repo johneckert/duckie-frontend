@@ -1,19 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { logOut } from '../actions/actions';
 
 const Header = props => {
+  const location = props.history.location.pathname;
+
   return (
     <div className="header">
       <h1 className="title">{'</Duckie>'}</h1>
       <ul className="nav-list">
         <li className="nav-li">
-          <a href="/conversation" className="nav-link">
+          <a
+            href="/conversation"
+            className={`nav-link ${location === '/conversation' ? 'underline' : ''}`}
+          >
             Conversation
           </a>
         </li>
         <li className="nav-li">
-          <a href="/dashboard" className="nav-link">
+          <a
+            href="/dashboard"
+            className={`nav-link ${location === '/dashboard' ? 'underline' : ''}`}
+          >
             Dashboard
           </a>
         </li>
@@ -23,7 +32,11 @@ const Header = props => {
               Log Out
             </a>
           ) : (
-            <a href="/login" className="nav-link" onClick={() => props.dispatchLogOut()}>
+            <a
+              href="/login"
+              className={`nav-link ${location === '/login' ? 'underline' : ''}`}
+              onClick={() => props.dispatchLogOut()}
+            >
               Log In
             </a>
           )}
@@ -45,4 +58,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

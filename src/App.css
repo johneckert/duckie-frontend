@@ -35,6 +35,7 @@ body {
 
 .loader {
   align-self: flex-start;
+  padding: 100px 295px;
   width: 100px;
   display: flex;
   justify-content: space-between;
@@ -126,6 +127,10 @@ body {
   display: inline;
 }
 
+.underline {
+  border-bottom: solid 2px var(--aqua);
+}
+
 .nav-link {
   padding: 0;
   margin: 0 20px 0 20px;
@@ -150,8 +155,6 @@ body {
 .nav-link:hover {
   text-decoration: none;
   color: var(--aqua);
-  /* make current page have border bottom if time */
-  border-bottom: solid 2px var(--aqua);
 }
 .nav-link:active {
   text-decoration: none;
