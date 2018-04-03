@@ -45,7 +45,16 @@ class Transcript extends React.Component {
   transcriptContent = () => {
     if (this.props.transcript === '' && !this.props.listening) {
       //on load
-      return <div className="instruction-text">Press Start Listening to Begin</div>;
+      return (
+        <div className="instruction-text">
+          <span>Press Start Listening to Begin.</span>
+          <br />
+          <br />
+          <span className="instruction-text smaller">
+            If you don't see text, pause for a second and let me catch up!
+          </span>
+        </div>
+      );
     } else if (this.props.transcript === '' && this.props.listening) {
       //listening and waiting for response
       return (

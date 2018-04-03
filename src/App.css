@@ -265,7 +265,7 @@ body {
   line-height: 1.13;
   align-self: center;
   text-align: center;
-  margin-top: 95px;
+  margin-top: 90px;
   color: var(--gray);
 
   /* POSITIONING */
@@ -273,6 +273,11 @@ body {
   grid-column-end: col-6;
   grid-row-start: row-d;
   grid-row-end: row-e;
+}
+
+.smaller {
+  opacity: 1;
+  font-size: 20px;
 }
 
 /* Keyword Area */
