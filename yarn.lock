@@ -5881,6 +5881,12 @@ react-audio-recorder@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-audio-recorder/-/react-audio-recorder-2.0.1.tgz#39ff205f04262e10e9b45f33115935bd798dcf2e"
 
+react-browser-detection@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-browser-detection/-/react-browser-detection-1.1.1.tgz#f0ac73ebdfe1379f7ccf83cfe3cbae512df81887"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-dev-utils@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.0.tgz#425ac7c9c40c2603bc4f7ab8836c1406e96bb473"

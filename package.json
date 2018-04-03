@@ -9,6 +9,7 @@
     "d3-force": "^1.1.0",
     "react": "^16.2.0",
     "react-audio-recorder": "^2.0.1",
+    "react-browser-detection": "^1.1.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
