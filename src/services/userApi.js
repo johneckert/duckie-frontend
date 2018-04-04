@@ -31,7 +31,7 @@ class UserApi {
         'Content-Type': 'application/json',
         Accepts: 'application/json'
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify({ user })
     }).then(res => res.json());
   }
 }
