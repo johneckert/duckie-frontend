@@ -90,7 +90,6 @@ export const createUser = user => {
     dispatch({ type: CREATING_USER });
     //create user in database
     UserApi.create(newUser).then(user => {
-      console.log('user', user);
       if (user.id) {
         //log-in new user
         UserApi.login(user.email, newUser.password).then(j => {

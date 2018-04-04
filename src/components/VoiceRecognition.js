@@ -51,7 +51,6 @@ class VoiceRecognition extends Component {
 
     this.handleResult({ interimTranscript, finalTranscript });
     //reboot speech to text every time there is a result.
-    console.log('reboot');
     this.continue();
   };
 
@@ -76,7 +75,6 @@ class VoiceRecognition extends Component {
   };
 
   handleSpeechBegin = event => {
-    console.log('Begin');
     this.updateInterval = setInterval(() => {
       this.props.dispatchUpdateConversation(this.props.user.id, this.props.conversation);
     }, 6500);
