@@ -9,10 +9,7 @@ class UserApi {
         Accepts: 'application/json'
       },
       body: JSON.stringify({ email, password })
-    }).then(res => {
-      console.log(res.json());
-      return res.json();
-    });
+    }).then(res => res.json());
   }
 
   static authorize() {
