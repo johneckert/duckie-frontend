@@ -61,7 +61,7 @@ class CreateAccountForm extends React.Component {
             name="email"
             type="text"
             id="email"
-            onChange={this.handleEmailChange}
+            onChange={this.handleChange}
             autoComplete="email"
           />
           <label className="login-label" htmlFor="password">
@@ -72,7 +72,7 @@ class CreateAccountForm extends React.Component {
             name="password"
             type="password"
             id="password"
-            onChange={this.handlePasswordChange}
+            onChange={this.handleChange}
             autoComplete="current-password"
           />
           <button className="login-button" onClick={event => this.handleCreateClick(event)}>
