@@ -90,6 +90,7 @@ export const createUser = user => {
     dispatch({ type: CREATING_USER });
     //create user in database
     UserApi.create(newUser).then(user => {
+      console.log('user', user);
       if (user.id) {
         //log-in new user
         UserApi.login(user.email, newUser.password).then(j => {
@@ -100,7 +101,6 @@ export const createUser = user => {
             });
           } else {
             localStorage.setItem('token', j.token);
-            console.log('token: ', localStorage.token);
             dispatch({
               type: LOGIN_SUCCEEDED,
               payload: { loggedIn: true, token: j.token, error: false }
