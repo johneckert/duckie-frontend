@@ -25,6 +25,7 @@ class UserApi {
 
   static create(user) {
     return fetch(BASE_URL + 'users', {
+      mode: 'no-cors',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
