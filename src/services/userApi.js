@@ -9,7 +9,7 @@ class UserApi {
         Accepts: 'application/json'
       },
       body: JSON.stringify({ email, password })
-    }).then(res => res);
+    }).then(res => res.json());
   }
 
   static authorize() {
@@ -20,7 +20,7 @@ class UserApi {
         Accepts: 'application/json',
         token: localStorage.getItem('token')
       }
-    }).then(res => res);
+    }).then(res => res.json());
   }
 
   static create(user) {
