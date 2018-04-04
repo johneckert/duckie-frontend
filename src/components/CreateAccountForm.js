@@ -22,6 +22,7 @@ class CreateAccountForm extends React.Component {
   };
 
   handleChange = event => {
+    console.log('f', this.state.firstName, 'l', this.state.lastName);
     this.setState({ ...this.state, [event.target.name]: event.target.value });
   };
 
