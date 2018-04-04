@@ -25,14 +25,13 @@ class UserApi {
 
   static create(user) {
     return fetch(BASE_URL + 'users', {
-      mode: 'no-cors',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Accepts: 'application/json'
       },
       body: JSON.stringify({ user })
-    }).then(res => res.json());
+    }).then(res => res);
   }
 }
 
