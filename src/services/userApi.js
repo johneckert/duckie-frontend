@@ -32,7 +32,7 @@ class UserApi {
         Accepts: 'application/json'
       },
       body: JSON.stringify(user)
-    }).then(res => console.log(res.json()));
+    }).then(res => res.json());
   }
 }
 
