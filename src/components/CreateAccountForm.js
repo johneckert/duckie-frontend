@@ -39,7 +39,7 @@ class CreateAccountForm extends React.Component {
             name="firstName"
             type="text"
             id="firstName"
-            onChange={this.handleFirstChange}
+            onChange={this.handleChange}
             autoComplete="given-name"
           />
           <label className="login-label" htmlFor="lastName">
@@ -50,7 +50,7 @@ class CreateAccountForm extends React.Component {
             name="lastName"
             type="text"
             id="lastName"
-            onChange={this.handleLastChange}
+            onChange={this.handleChange}
             autoComplete="family-name"
           />
           <label className="login-label" htmlFor="email">
