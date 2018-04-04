@@ -92,7 +92,7 @@ export const createUser = user => {
     UserApi.create(newUser).then(user => {
       if (user.id) {
         //log-in new user
-        UserApi.login(user.email, newUser.password).then(j => {
+        UserApi.login(newUser.email, newUser.password).then(j => {
           if (j.error) {
             dispatch({
               type: LOGIN_FAILED,

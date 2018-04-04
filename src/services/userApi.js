@@ -31,7 +31,7 @@ class UserApi {
         Accepts: 'application/json'
       },
       body: JSON.stringify({ user })
-    }).then(res => res);
+    }).then(res => res.json());
   }
 }
 
