@@ -20,7 +20,7 @@ class UserApi {
         Accepts: 'application/json',
         token: localStorage.getItem('token')
       }
-    }).then(res => res.json());
+    }).then(res => res);
   }
 
   static create(user) {
