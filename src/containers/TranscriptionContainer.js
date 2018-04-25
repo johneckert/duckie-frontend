@@ -13,8 +13,8 @@ class TranscriptionContainer extends React.Component {
 
   render() {
     return (
-      <div className="transcript-item">
-        <span className="header-item">
+      <div className="transcript-container">
+        <span className="transcript-header-span">
           <TranscriptHeader />
           <ListenButton />
         </span>
