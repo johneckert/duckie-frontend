@@ -9,6 +9,9 @@ const Header = props => {
   return (
     <div className="header">
       <h1 className="title">{'</Duckie>'}</h1>
+      <a id="hamburger" href="#">
+        &#9776;
+      </a>
       <ul className="nav-list">
         <li className="nav-li">
           <a

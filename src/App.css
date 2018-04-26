@@ -49,11 +49,6 @@ body {
     object-fit: contain;
   }
 
-  .nav-list {
-    /* this is just to space the rest - it should go to hamburger menu on phone */
-    display: none;
-  }
-
   .transcript-header-span {
     display: flex;
     flex-direction: column;
@@ -78,7 +73,7 @@ body {
     line-height: 1.13;
     align-self: center;
     text-align: center;
-    margin-top: 60px;
+    margin: 0px;
     color: var(--gray);
   }
 
@@ -114,6 +109,34 @@ body {
     justify-content: space-between;
     align-content: stretch;
   }
+  /* NAV */
+  .nav-list {
+    /* this is just to space the rest - it should go to hamburger menu on phone */
+    display: none;
+  }
+
+  #hamburger {
+    font-size: 30px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    color: var(--midnight);
+    text-decoration: none;
+  }
+
+  #hamburger:hover {
+    color: var(--midnight);
+    text-decoration: none;
+  }
+
+  #hamburger:active {
+    color: var(--midnight);
+    text-decoration: none;
+  }
+
+  #hamburger:visited {
+    color: var(--midnight);
+    text-decoration: none;
+  }
 }
 
 /* Tablet */
@@ -139,6 +162,7 @@ body {
   .transcript-header {
     font-family: BioRhyme;
     font-size: 24px;
+    line-height: 34px;
     font-weight: bold;
     text-align: left;
     color: var(--aqua);
@@ -152,7 +176,7 @@ body {
     line-height: 1.13;
     align-self: center;
     text-align: center;
-    margin-top: 80px;
+    margin: 0px;
     color: var(--gray);
   }
 
@@ -188,6 +212,10 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-content: stretch;
+  }
+
+  #hamburger {
+    display: none;
   }
 }
 
@@ -225,9 +253,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     line-height: 1.13;
-    align-self: center;
-    text-align: center;
-    margin-top: 80px;
+    margin: 0;
     color: var(--gray);
   }
 
@@ -258,11 +284,16 @@ body {
 
   .transcript-container {
     width: 75%;
+    max-width: 750px;
     margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-content: stretch;
+  }
+
+  #hamburger {
+    display: none;
   }
 }
 
@@ -281,8 +312,7 @@ body {
 /* LOADING DOTS */
 
 .loader {
-  align-self: flex-start;
-  padding: 100px 295px;
+  margin: 0;
   width: 100px;
   display: flex;
   justify-content: space-between;
@@ -324,6 +354,12 @@ body {
   animation-duration: 1s;
   animation-name: loading-three;
   animation-iteration-count: infinite;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes loading-one {
@@ -429,7 +465,7 @@ body {
 
 .title {
   width: 27%;
-  padding: 0 0 0 40px;
+  padding-left: 40px;
   height: 36.5%;
   font-family: BioRhyme;
   font-size: 24px;
@@ -447,8 +483,6 @@ body {
   height: 8%;
   background-color: var(--gray);
 }
-
-/* Transcript Area */
 
 /* Keyword Area */
 
