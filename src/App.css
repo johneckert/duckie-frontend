@@ -171,6 +171,36 @@ body {
   .nav-link {
     display: block;
   }
+
+  .dashboard-header {
+    font-family: BioRhyme;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--aqua);
+  }
+
+  .dash-button {
+    width: 346px;
+    height: 42px;
+    font-family: Sarala;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--red-orange);
+    border-radius: 2%;
+    border: none;
+    margin: 0 0 30px 0;
+  }
+
+  .dashboard-keyword-area {
+    width: 754px;
+    background-color: var(--gray);
+    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+      0 16px 24px 2px rgba(0, 0, 0, 0.14);
+  }
 }
 
 /* Tablet */
@@ -264,6 +294,36 @@ body {
     text-align: center;
     color: var(--midnight);
   }
+
+  .dashboard-header {
+    font-family: BioRhyme;
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: bold;
+    text-align: left;
+    color: var(--aqua);
+  }
+
+  .dash-button {
+    width: 346px;
+    height: 42px;
+    font-family: Sarala;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--red-orange);
+    border-radius: 2%;
+    border: none;
+    margin: 0 0 30px 0;
+  }
+
+  .dashboard-keyword-area {
+    width: 754px;
+    background-color: var(--gray);
+    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+      0 16px 24px 2px rgba(0, 0, 0, 0.14);
+  }
 }
 
 /* laptop */
@@ -355,8 +415,51 @@ body {
     text-align: center;
     color: var(--midnight);
   }
-}
 
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard-main-area {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .dashboard-header {
+    width: 100%;
+    font-family: BioRhyme;
+    font-size: 36px;
+    text-align: left;
+    color: var(--aqua);
+    margin: 60px 0 30px 0;
+  }
+
+  .dash-button {
+    font-family: Sarala;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--red-orange);
+    border-radius: 2%;
+    border: none;
+    margin: 0 0 30px 0;
+  }
+
+  .dashboard-keyword-area {
+    width: 60%;
+    background-color: var(--gray);
+    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
+      0 16px 24px 2px rgba(0, 0, 0, 0.14);
+    margin: 125px 0 0 30px;
+  }
+}
+/*//////////////////////////////////////////////////////*/
 .listen-button {
   font-family: Sarala;
   font-size: 14px;
@@ -543,37 +646,6 @@ body {
 
 .dash {
   align-self: stretch;
-  grid-column-start: col-1;
-  grid-column-end: col-2;
-  grid-row-start: row-d;
-  grid-row-end: row-e;
-}
-
-.dash-button {
-  width: 346px;
-  height: 42px;
-  font-family: Sarala;
-  font-size: 14px;
-  /* font-weight: bold; */
-  letter-spacing: 0.5px;
-  text-align: center;
-  color: var(--white);
-  background-color: var(--red-orange);
-  border-radius: 2%;
-  border: none;
-}
-
-.dashboard-header {
-  font-family: BioRhyme;
-  /* width: 406px; */
-  font-size: 36px;
-  text-align: left;
-  color: var(--aqua);
-
-  grid-column-start: col-1;
-  grid-column-end: col-5;
-  grid-row-start: row-b;
-  grid-row-end: row-c;
 }
 
 .count-style {
@@ -614,18 +686,6 @@ body {
   font-weight: bold;
   text-align: left;
   color: var(--midnight);
-}
-
-.dashboard-keyword-area {
-  width: 754px;
-  background-color: var(--gray);
-  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),
-    0 16px 24px 2px rgba(0, 0, 0, 0.14);
-
-  grid-column-start: col-3;
-  grid-column-end: col-6;
-  grid-row-start: row-d;
-  grid-row-end: row-g;
 }
 
 .count-container {
@@ -824,9 +884,10 @@ body {
 /* LOGIN AREA */
 
 .tiny-duck {
-  position: relative;
+  position: absolute;
+  margin-top: 30px;
   left: 45%;
-  top: -50px;
+  top: 0;
   width: 94.5px;
   height: 99px;
   object-fit: contain;
@@ -895,9 +956,13 @@ body {
 }
 
 .login-panel {
-  width: 600px;
-  height: 528px;
-  margin: 100px 340px 0px 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  /* height: 528px; */
+  margin: 100px 340px 100px 340px;
   padding: 60px;
   background-color: var(--white);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 5px rgba(0, 0, 0, 0.12),

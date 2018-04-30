@@ -16,12 +16,16 @@ class DashboardContainer extends React.Component {
 
   render() {
     return (
-      <div className="conversation-container">
+      <div className="dashboard-container">
         <TinyDuck />
-        <Greeting />
-        <ConversationButton />
-        <ConversationCount />
-        <UserKeywordArea />
+        <div className="dashboard-main-area">
+          <div className="left-panel">
+            <Greeting />
+            <ConversationButton />
+            <ConversationCount />
+          </div>
+          <UserKeywordArea />
+        </div>
       </div>
     );
   }
