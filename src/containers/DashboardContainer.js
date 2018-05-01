@@ -16,7 +16,7 @@ class DashboardContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="dashboard-outer">
         <TinyDuck />
         <div className="dashboard-container">
           <Greeting />
