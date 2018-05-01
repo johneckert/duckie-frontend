@@ -27,7 +27,7 @@ class LoginForm extends React.Component {
     return (
       <div className="login-panel">
         <div className="login-title">Sign In</div>
-        <form>
+        <form className="login-form">
           <label className="login-label" htmlFor="email">
             EMAIL
           </label>
