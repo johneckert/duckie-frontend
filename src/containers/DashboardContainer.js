@@ -16,15 +16,17 @@ class DashboardContainer extends React.Component {
 
   render() {
     return (
-      <div className="dashboard-container">
+      <div>
         <TinyDuck />
-        <div className="dashboard-main-area">
-          <div className="left-panel">
-            <Greeting />
-            <ConversationButton />
-            <ConversationCount />
+        <div className="dashboard-container">
+          <Greeting />
+          <div className="dashboard-main-area">
+            <div className="left-panel">
+              <ConversationButton />
+              <ConversationCount />
+            </div>
+            <UserKeywordArea />
           </div>
-          <UserKeywordArea />
         </div>
       </div>
     );
