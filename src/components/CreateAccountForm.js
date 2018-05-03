@@ -29,7 +29,7 @@ class CreateAccountForm extends React.Component {
     return (
       <div className="login-panel">
         <div className="login-title">Create Account</div>
-        <form>
+        <form className="login-form">
           <label className="login-label" htmlFor="firstName">
             FIRST NAME
           </label>
