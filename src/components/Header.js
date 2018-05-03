@@ -9,24 +9,23 @@ const Header = props => {
   return (
     <div className="header">
       <h1 className="title">{'</Duckie>'}</h1>
-      <ul className="nav-list">
-        <li className="nav-li">
+      <div className="dropdown">
+        <span id="hamburger">&#9776;</span>
+        <div className="dropdown-content">
           <a
             href="/conversation"
             className={`nav-link ${location === '/conversation' ? 'underline' : ''}`}
           >
             Conversation
           </a>
-        </li>
-        <li className="nav-li">
+
           <a
             href="/dashboard"
             className={`nav-link ${location === '/dashboard' ? 'underline' : ''}`}
           >
             Dashboard
           </a>
-        </li>
-        <li className="nav-li">
+
           {props.loggedIn ? (
             <a href="/login" className="nav-link" onClick={() => props.dispatchLogOut()}>
               Log Out
@@ -40,8 +39,8 @@ const Header = props => {
               Log In
             </a>
           )}
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 };

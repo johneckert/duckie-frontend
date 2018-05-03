@@ -13,9 +13,11 @@ class ConversationContainer extends React.Component {
 
   render() {
     return (
-      <div className="conversation-container">
-        <HeroDuck />
-        <TranscriptionContainer className="transcript-item" />
+      <div>
+        <div className="conversation-container">
+          <HeroDuck />
+          <TranscriptionContainer />
+        </div>
         <KeywordArea className="keyword-item" />
       </div>
     );

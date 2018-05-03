@@ -71,7 +71,11 @@ class Transcript extends React.Component {
   };
 
   render() {
-    return <div className="transcript-box">{this.transcriptContent()}</div>;
+    return (
+      <div className={`transcript-box ${this.props.transcript === '' ? 'centered' : null}`}>
+        {this.transcriptContent()}
+      </div>
+    );
   }
 }
 
