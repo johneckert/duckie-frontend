@@ -5,12 +5,12 @@ import { toggleListening } from '../actions/actions';
 
 const ListenButton = props => {
   const BrowserHandler = {
-    chrome: () => (
+    chrome: (props) => (
       <button onClick={props.dispatchToggleListening} className="listen-button">
         {props.listening ? 'STOP LISTENING' : 'START LISTENING'}
       </button>
     ),
-    default: () => (
+    default: (props) => (
       <button className="listen-button">
         {props.listening ? 'STOP LISTENING' : 'START LISTENING'}
       </button>
