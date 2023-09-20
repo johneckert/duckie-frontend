@@ -15,11 +15,10 @@
 
 # How To Use
 
-* You may play anonymously or log-in to track your high score.
-* Choose a background theme from the drop-down menu and hit start to begin.
-* Use arrow keys to move tile left, right or down.
-* Get three tile of the same color in a row to earn points.
-* If the tiles reach the top you lose!
+* A browser tool for rubber duck debugging!
+* Duckie uses the WebSpeech API to listen to you describe what you are stuck on.
+* It will then scan what you said for keywords to help you identify your problem.
+* It then ranks those keywords by frequency and importance.
 
 ### Prerequsites
 
